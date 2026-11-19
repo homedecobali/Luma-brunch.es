@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luma Brunch Benijófar</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Luma Brunch en Benijófar: smoothies, bowls, zumos naturales, tostadas y specialty coffee, preparados al momento. Lunes a sábado de 9:00 a 16:00.">
+<meta name="theme-color" content="#0b4425">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:title" content="Luma Brunch · Benijófar">
+<meta property="og:description" content="Smoothies, bowls, zumos y brunch preparados al momento. C. Aneto 13, Benijófar.">
+<meta property="og:image" content="assets/img/logo-badge.jpg">
+<meta property="og:type" content="restaurant">
+<link rel="alternate" hreflang="es" href="https://luma-brunch.es/?lang=es">
+<link rel="alternate" hreflang="en" href="https://luma-brunch.es/?lang=en">
+<link rel="alternate" hreflang="nl" href="https://luma-brunch.es/?lang=nl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Luma Brunch","image":"https://luma-brunch.es/assets/img/logo-badge.jpg","url":"https://luma-brunch.es/","servesCuisine":["Brunch","Breakfast","Healthy","Smoothies","Coffee"],"priceRange":"€","address":{"@type":"PostalAddress","streetAddress":"C. Aneto, Local 13","postalCode":"03178","addressLocality":"Benijófar","addressRegion":"Alicante","addressCountry":"ES"},"geo":{"@type":"GeoCoordinates","latitude":38.082498,"longitude":-0.734103},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"16:00"}],"sameAs":["https://www.instagram.com/lumabrunch/","https://www.facebook.com/profile.php?id=61552408986800"],"hasMenu":"https://luma-brunch.es/#carta"}
+</script>
+<style>
+/* Layout: one long page that follows a visit — arrive (hero), choose (favoritos, carta), feel (historia), come by (visítanos).
+   The gold arch from the Luma badge frames the key moments. */
+:root{
+  --green:#0b4425;      /* brand green from the logo */
+  --green-2:#14583a;
+  --gold:#c8963e;       /* arch frame */
+  --cream:#faf3e6;
+  --mint:#3fe0a0;       /* the neon sign */
+  --ink:#10291c;
+  --bg:var(--cream);
+  --surface:#fffaf1;
+  --fg:var(--ink);
+  --muted:#4f6457;
+  --line:#e3d7bf;
+  --accent:var(--green);
+  --on-accent:var(--cream);
+  --chip:#efe5d0;
+  --shadow:0 1px 0 rgba(16,41,28,.04),0 10px 30px -18px rgba(16,41,28,.35);
+  --f-display:"Fredoka","Baloo 2","Nunito",ui-rounded,system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --r:18px;
+  --max:1160px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#08261a;--surface:#0d3222;--fg:#f3ecdc;--muted:#a9bfae;--line:#1f4a35;--accent:var(--mint);--on-accent:#06261a;--chip:#123b29;
+  --shadow:0 10px 30px -18px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08261a;--surface:#0d3222;--fg:#f3ecdc;--muted:#a9bfae;--line:#1f4a35;--accent:var(--mint);--on-accent:#06261a;--chip:#123b29;
+  --shadow:0 10px 30px -18px rgba(0,0,0,.7);color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16.5px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font:600 12.5px/1 var(--f-body);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px}
+.eyebrow::before,.eyebrow::after{content:"";height:1.5px;width:26px;background:currentColor;opacity:.8}
+.eyebrow.left::before{display:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font:600 15.5px/1 var(--f-body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{border-color:currentColor;color:var(--fg);background:transparent}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .mark{height:38px;width:auto}
+.brand .word{height:30px;width:auto}
+.logo-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo-light{display:none}:root:not([data-theme="light"]) .logo-dark{display:block}}
+:root[data-theme="dark"] .logo-light{display:none}:root[data-theme="dark"] .logo-dark{display:block}
+nav.main{display:flex;gap:26px;margin-left:auto}
+nav.main a{text-decoration:none;font-weight:600;font-size:15px;color:var(--muted)}
+nav.main a:hover{color:var(--fg)}
+.lang{display:flex;border:1.5px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;color:var(--muted);font:700 12.5px/1 var(--f-body);letter-spacing:.06em;padding:7px 10px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+@media (max-width:860px){nav.main{display:none}.top .wrap{justify-content:space-between}.brand .word{height:24px}}
+
+/* hero */
+.hero{padding-block:56px 40px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(52px,8.4vw,108px);font-weight:700;color:var(--accent)}
+.hero h1 span{display:block;color:var(--fg)}
+.hero .lede{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:30ch;margin-top:22px}
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:8px 14px 8px 12px;border-radius:999px;background:var(--chip);font-weight:600;font-size:14.5px}
+.status i{width:10px;height:10px;border-radius:50%;background:#b9b3a3;flex:none}
+.status.open i{background:var(--mint);box-shadow:0 0 0 4px color-mix(in srgb,var(--mint) 30%,transparent),0 0 14px var(--mint)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.arch{position:relative;justify-self:center;width:min(100%,430px);aspect-ratio:4/5;border-radius:999px 999px 34px 34px;padding:10px;background:linear-gradient(160deg,#e3bb6c,var(--gold) 45%,#9c6f27);box-shadow:var(--shadow)}
+.arch img{width:100%;height:100%;object-fit:cover;border-radius:999px 999px 26px 26px}
+.arch .tag{position:absolute;left:-18px;bottom:34px;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font-size:13.5px;line-height:1.35;max-width:210px}
+.arch .tag b{font:600 22px/1 var(--f-display);color:var(--accent);display:block;margin-bottom:4px}
+@media (max-width:860px){.hero{padding-block:32px 24px}.hero .wrap{grid-template-columns:1fr;gap:40px}.arch{width:min(100%,340px)}.arch .tag{left:-8px}}
+
+/* ticker */
+.ticker{background:var(--green);color:var(--cream);overflow:hidden;border-block:3px solid var(--gold)}
+.ticker .row{display:flex;gap:40px;white-space:nowrap;padding-block:14px;font:600 18px/1 var(--f-display);letter-spacing:.04em;animation:tick 38s linear infinite;width:max-content}
+.ticker .row span::after{content:"✳";color:var(--gold);margin-left:40px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+section{padding-block:88px}
+.sec-head{display:grid;gap:14px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(36px,5vw,58px)}
+.sec-head p{color:var(--muted);max-width:56ch}
+
+/* favourites */
+.favs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.fav{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;grid-template-columns:86px 1fr;gap:18px;align-items:start}
+.plate{width:86px;height:86px;border-radius:50%;position:relative;box-shadow:inset 0 -6px 0 rgba(0,0,0,.08),0 0 0 6px var(--chip)}
+.plate::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),transparent 40%)}
+.fav h3{font-size:22px}
+.fav .price{font:600 18px/1 var(--f-display);color:var(--gold);font-variant-numeric:tabular-nums;margin-top:6px}
+.fav p{font-size:14.5px;color:var(--muted);margin-top:10px}
+@media (max-width:960px){.favs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.favs{grid-template-columns:1fr}}
+
+/* menu */
+.menu-tools{position:sticky;top:calc(68px + env(safe-area-inset-top,0px));z-index:20;background:var(--bg);padding-block:14px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.tool-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1 1 240px;min-width:0;display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:0 16px}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:500 15.5px var(--f-body);padding:12px 0;outline:none}
+.search svg{width:18px;height:18px;color:var(--muted);flex:none}
+.filt{border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:10px 14px;font:600 14px/1 var(--f-body);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.filt[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.cats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.cats::-webkit-scrollbar{display:none}
+.cats a{flex:none;text-decoration:none;padding:8px 14px;border-radius:999px;background:var(--chip);font-weight:600;font-size:14px;color:var(--fg)}
+.cats a.on{background:var(--gold);color:#1d1406}
+.menu{columns:2;column-gap:56px;margin-top:34px}
+.cat{break-inside:avoid;margin-bottom:46px}
+.cat h3{font-size:30px;color:var(--accent);display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+.cat h3 small{font:600 12px/1 var(--f-body);letter-spacing:.2em;color:var(--muted)}
+.item{padding-block:11px;border-bottom:1px dashed var(--line)}
+.item .l{display:flex;gap:10px;align-items:baseline}
+.item .n{font-weight:700;font-size:16.5px}
+.item .dots{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px);min-width:16px}
+.item .p{font:600 17px/1 var(--f-display);font-variant-numeric:tabular-nums;color:var(--fg);white-space:nowrap}
+.item .d{color:var(--muted);font-size:14.5px;margin-top:4px;max-width:60ch}
+.badges{display:inline-flex;gap:5px;margin-left:2px;transform:translateY(-1px)}
+.b{font:700 10.5px/1 var(--f-body);letter-spacing:.06em;padding:4px 6px;border-radius:6px;border:1.5px solid currentColor}
+.b-v{color:#2f8f4e}.b-vg{color:#7a8a2a}.b-p{color:#b0702a}.b-fav{color:var(--gold);border-style:solid}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .b-v{color:#6fdc94}:root:not([data-theme="light"]) .b-vg{color:#cdd77a}:root:not([data-theme="light"]) .b-p{color:#efb26a}}
+:root[data-theme="dark"] .b-v{color:#6fdc94}:root[data-theme="dark"] .b-vg{color:#cdd77a}:root[data-theme="dark"] .b-p{color:#efb26a}
+.note{font-size:13.5px;color:var(--muted);margin-top:10px;font-style:italic}
+.empty{padding:40px 0;color:var(--muted);text-align:center}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--muted);margin-top:8px}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+@media (max-width:820px){.menu{columns:1}}
+
+/* story */
+.story{position:relative;color:var(--cream);background:var(--green);overflow:hidden}
+.story::before{content:"";position:absolute;inset:0;background:url(assets/img/leaves.jpg) center/cover;opacity:.22;mix-blend-mode:luminosity}
+.story .wrap{position:relative;display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.story h2{font-size:clamp(40px,5.6vw,68px);color:var(--cream)}
+.story h2 em{font-style:normal;color:var(--mint);text-shadow:0 0 18px color-mix(in srgb,var(--mint) 60%,transparent)}
+.story p{color:#e8e0cc;font-size:17.5px;max-width:58ch}
+.story .copy{display:grid;gap:16px}
+.story .eyebrow{color:#e3bb6c}
+.story .badge{justify-self:center;width:min(100%,360px);border-radius:999px 999px 30px 30px;overflow:hidden;border:8px solid var(--gold);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+@media (max-width:860px){.story .wrap{grid-template-columns:1fr}.story .badge{width:min(100%,280px)}}
+
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:grid;gap:12px;align-content:start}
+.card{min-width:0}.card .big{font:700 clamp(34px,8vw,52px)/1 var(--f-display);overflow-wrap:anywhere;color:var(--accent);font-variant-numeric:tabular-nums}
+.stars{color:var(--gold);letter-spacing:3px;font-size:20px}
+.card p{color:var(--muted)}
+.card a.more{font-weight:700;color:var(--accent);text-decoration:none}
+.card a.more:hover{text-decoration:underline}
+@media (max-width:900px){.proof{grid-template-columns:1fr}}
+
+/* visit */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:10px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:600}
+.hours tr.today td{color:var(--accent);font-weight:700}
+.hours tr.today td:first-child::after{content:" ●";color:var(--mint)}
+.addr{font:600 26px/1.25 var(--f-display)}
+.stack{display:grid;gap:18px;align-content:start}
+.map{border-radius:var(--r);overflow:hidden;position:relative;min-height:260px;background:
+  radial-gradient(circle at 50% 46%,var(--gold) 0 9px,transparent 10px),
+  radial-gradient(circle at 50% 46%,color-mix(in srgb,var(--gold) 30%,transparent) 0 30px,transparent 31px),
+  repeating-linear-gradient(28deg,transparent 0 46px,var(--line) 46px 48px),
+  repeating-linear-gradient(-62deg,transparent 0 70px,var(--line) 70px 73px),var(--surface);border:1px solid var(--line);display:flex;align-items:flex-end;padding:18px;text-decoration:none}
+.map span{background:var(--accent);color:var(--on-accent);border-radius:999px;padding:10px 16px;font-weight:700;font-size:14.5px}
+@media (max-width:860px){.visit .wrap{grid-template-columns:1fr}}
+
+footer{background:var(--green);color:var(--cream);padding-block:48px 40px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:center}
+footer .social{display:flex;gap:12px}
+footer .social a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1.5px solid color-mix(in srgb,var(--cream) 40%,transparent);color:var(--cream)}
+footer .social svg{width:20px;height:20px}
+footer small{opacity:.7;display:block;margin-top:6px}
+
+.float-wa{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.5)}
+.float-wa svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Luma Brunch">
+      <img class="mark logo-light" src="assets/img/mark-green.png" alt="" width="44" height="38">
+      <img class="mark logo-dark" src="assets/img/mark-cream.png" alt="" width="44" height="38">
+      <img class="word logo-light" src="assets/img/wordmark-green.png" alt="Luma Brunch" width="58" height="30">
+      <img class="word logo-dark" src="assets/img/wordmark-cream.png" alt="Luma Brunch" width="58" height="30">
+    </a>
+    <nav class="main" aria-label="Principal">
+      <a href="#favoritos" data-i="nav_fav">Favoritos</a>
+      <a href="#carta" data-i="nav_menu">La carta</a>
+      <a href="#historia" data-i="nav_story">Nuestra historia</a>
+      <a href="#visitanos" data-i="nav_visit">Visítanos</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language / Taal">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="nl" aria-pressed="false">NL</button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow left" data-i="hero_eyebrow">Benijófar · Brunch &amp; Coffee</p>
+        <h1 style="margin-top:20px"><span data-i="hero_h1a">Tu momento</span>Luma.</h1>
+        <p class="lede" data-i="hero_lede">Smoothies, bowls, zumos naturales y tostadas, preparados al momento con ingredientes frescos.</p>
+        <div class="status" id="status" aria-live="polite"><i></i><span id="statusText">&nbsp;</span></div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#carta"><span data-i="cta_menu">Ver la carta</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="https://glovoapp.com/es/es/quesada/luma-quesada" target="_blank" rel="noopener"><span data-i="cta_glovo">Pide a domicilio</span></a>
+        </div>
+      </div>
+      <figure class="arch" style="margin:0">
+        <img src="assets/img/neon-sign.jpg" alt="Letrero de neón de Luma Brunch sobre papel pintado de hojas de plátano" data-i-alt="neon_alt" width="1100" height="1467">
+        <figcaption class="tag"><b>4,7 ★</b><span data-i="tag_reviews">104 reseñas en Google</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="row" id="ticker"></div></div>
+
+  <section id="favoritos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow left" data-i="fav_eyebrow">Los favoritos de la casa</p>
+        <h2 data-i="fav_h2">Lo que más se pide en Luma</h2>
+        <p data-i="fav_p">Seis platos para empezar. Todo se prepara al momento, así que lo bueno a veces tarda un poquito.</p>
+      </div>
+      <div class="favs" id="favs"></div>
+    </div>
+  </section>
+
+  <section id="carta" style="padding-top:20px">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow left" data-i="menu_eyebrow">Fresh &amp; homemade</p>
+        <h2 data-i="menu_h2">La carta</h2>
+        <div class="legend">
+          <span><b class="b b-v">V</b> <span data-i="lg_v">Vegano</span></span>
+          <span><b class="b b-vg">VG</b> <span data-i="lg_vg">Vegetariano</span></span>
+          <span><b class="b b-p">P</b> <span data-i="lg_p">Rico en proteína</span></span>
+          <span data-i="lg_allerg">¿Alergias? Pregunta a nuestro equipo.</span>
+        </div>
+      </div>
+      <div class="menu-tools">
+        <div class="tool-row">
+          <label class="search" for="q">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="q" type="search" autocomplete="off" placeholder="Busca: aguacate, matcha, açaí…" data-i-ph="search_ph">
+          </label>
+          <button class="filt" type="button" data-f="v" aria-pressed="false"><span data-i="lg_v">Vegano</span></button>
+          <button class="filt" type="button" data-f="vg" aria-pressed="false"><span data-i="lg_vg">Vegetariano</span></button>
+          <button class="filt" type="button" data-f="p" aria-pressed="false"><span data-i="f_p">Proteína</span></button>
+        </div>
+        <nav class="cats" id="cats" aria-label="Categorías"></nav>
+      </div>
+      <div class="menu" id="menu"></div>
+    </div>
+  </section>
+
+  <section id="historia" class="story">
+    <div class="wrap">
+      <img class="badge" src="assets/img/logo-badge.jpg" alt="Logotipo de Luma Brunch" width="705" height="765">
+      <div class="copy">
+        <p class="eyebrow left" data-i="story_eyebrow">Nuestra filosofía</p>
+        <h2 data-i-html="story_h2">Lo bueno <em>necesita tiempo.</em></h2>
+        <p data-i="story_p1">En Luma, la frescura es nuestro ingrediente secreto. Creemos que la buena comida empieza con ingredientes frescos y un poquito más de cariño.</p>
+        <p data-i="story_p2">Por eso preparamos tus smoothies, zumos naturales y bowls desde cero en el momento en que los pides. Y lo mismo con nuestros platos. Si tu pedido tarda un poco más, es porque lo hacemos especialmente para ti.</p>
+        <p data-i="story_p3">Siéntate, respira y disfruta de la pausa. Hay sitio para un café rápido o para un brunch largo con amigos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="opiniones">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow left" data-i="proof_eyebrow">Lo que dicen de Luma</p>
+        <h2 data-i="proof_h2">Un rincón que la gente recomienda</h2>
+      </div>
+      <div class="proof">
+        <div class="card">
+          <div class="big">4,7</div>
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p data-i="proof_google">Valoración media en Google, con más de 100 reseñas de clientes.</p>
+          <a class="more" href="https://www.google.com/maps/search/?api=1&amp;query=Luma+Brunch+Calle+Aneto+13+Benijofar" target="_blank" rel="noopener" data-i="proof_google_a">Leer las reseñas →</a>
+        </div>
+        <div class="card">
+          <div class="big">Vegan</div>
+          <p data-i="proof_vegan">Muy recomendable para veganos según Spinach: tostadas veganas, bebidas vegetales y la carta claramente marcada.</p>
+          <a class="more" href="#carta" data-i="proof_vegan_a">Ver opciones veganas →</a>
+        </div>
+        <div class="card">
+          <div class="big" style="font-size:clamp(28px,4.4vw,40px)">@lumabrunch</div>
+          <p data-i="proof_ig">Platos del día, novedades y cambios de horario: todo lo compartimos primero en Instagram.</p>
+          <a class="more" href="https://www.instagram.com/lumabrunch/" target="_blank" rel="noopener" data-i="proof_ig_a">Síguenos en Instagram →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visitanos" class="visit" style="padding-top:20px">
+    <div class="wrap">
+      <div class="stack">
+        <p class="eyebrow left" data-i="visit_eyebrow">Nos vemos en Benijófar</p>
+        <h2 style="font-size:clamp(36px,5vw,58px)" data-i="visit_h2">Tu próxima pausa empieza aquí</h2>
+        <p class="addr">C. Aneto, Local 13<br>03178 Benijófar, Alicante</p>
+        <table class="hours" id="hours"></table>
+        <p class="note" data-i="visit_note">Festivos y cambios de horario: consulta nuestras historias de Instagram.</p>
+        <div class="cta-row" style="margin-top:4px">
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=38.082498,-0.734103" target="_blank" rel="noopener"><span data-i="cta_route">Cómo llegar</span></a>
+          <a class="btn btn-ghost" id="waBtn" href="#" target="_blank" rel="noopener" hidden><span data-i="cta_wa">WhatsApp</span></a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/lumabrunch/" target="_blank" rel="noopener"><span data-i="cta_dm">Escríbenos en Instagram</span></a>
+        </div>
+      </div>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Luma+Brunch+Calle+Aneto+13+Benijofar" target="_blank" rel="noopener" aria-label="Google Maps"><span data-i="map_open">Abrir en Google Maps ↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="assets/img/wordmark-cream.png" alt="Luma Brunch" style="height:44px;width:auto">
+      <small data-i="foot">Preparado al momento, con cariño · Benijófar</small>
+    </div>
+    <div class="social">
+      <a href="https://www.instagram.com/lumabrunch/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=61552408986800" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7H17l.5-4h-4v-2c0-.6.4-1 1-1Z"/></svg></a>
+      <a href="https://glovoapp.com/es/es/quesada/luma-quesada" target="_blank" rel="noopener" aria-label="Glovo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9h14l-1.5 10h-11z"/><path d="M9 9a3 3 0 0 1 6 0"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+
+<script src="assets/menu.js"></script>
+<script>
+/* ===== Ajustes: rellena el número de WhatsApp (formato internacional, sin + ni espacios) para mostrar los botones ===== */
+const WHATSAPP = ""; // p. ej. "34600000000"
+const OPEN = {1:["09:00","16:00"],2:["09:00","16:00"],3:["09:00","16:00"],4:["09:00","16:00"],5:["09:00","16:00"],6:["09:00","16:00"]}; // 0 = domingo (cerrado)
+
+const T = {
+es:{nav_fav:"Favoritos",nav_menu:"La carta",nav_story:"Nuestra historia",nav_visit:"Visítanos",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Tu momento",hero_lede:"Smoothies, bowls, zumos naturales y tostadas, preparados al momento con ingredientes frescos.",cta_menu:"Ver la carta",cta_glovo:"Pide a domicilio",tag_reviews:"104 reseñas en Google",neon_alt:"Letrero de neón de Luma Brunch sobre papel pintado de hojas de plátano",
+fav_eyebrow:"Los favoritos de la casa",fav_h2:"Lo que más se pide en Luma",fav_p:"Seis platos para empezar. Todo se prepara al momento, así que lo bueno a veces tarda un poquito.",
+menu_eyebrow:"Fresh & homemade",menu_h2:"La carta",lg_v:"Vegano",lg_vg:"Vegetariano",lg_p:"Rico en proteína",f_p:"Proteína",lg_allerg:"¿Alergias? Pregunta a nuestro equipo.",search_ph:"Busca: aguacate, matcha, açaí…",empty:"Nada coincide con tu búsqueda.",
+story_eyebrow:"Nuestra filosofía",story_h2:"Lo bueno <em>necesita tiempo.</em>",story_p1:"En Luma, la frescura es nuestro ingrediente secreto. Creemos que la buena comida empieza con ingredientes frescos y un poquito más de cariño.",story_p2:"Por eso preparamos tus smoothies, zumos naturales y bowls desde cero en el momento en que los pides. Y lo mismo con nuestros platos. Si tu pedido tarda un poco más, es porque lo hacemos especialmente para ti.",story_p3:"Siéntate, respira y disfruta de la pausa. Hay sitio para un café rápido o para un brunch largo con amigos.",
+proof_eyebrow:"Lo que dicen de Luma",proof_h2:"Un rincón que la gente recomienda",proof_google:"Valoración media en Google, con más de 100 reseñas de clientes.",proof_google_a:"Leer las reseñas →",proof_vegan:"Muy recomendable para veganos según Spinach: tostadas veganas, bebidas vegetales y la carta claramente marcada.",proof_vegan_a:"Ver opciones veganas →",proof_ig:"Platos del día, novedades y cambios de horario: todo lo compartimos primero en Instagram.",proof_ig_a:"Síguenos en Instagram →",
+visit_eyebrow:"Nos vemos en Benijófar",visit_h2:"Tu próxima pausa empieza aquí",visit_note:"Festivos y cambios de horario: consulta nuestras historias de Instagram.",cta_route:"Cómo llegar",cta_wa:"WhatsApp",cta_dm:"Escríbenos en Instagram",map_open:"Abrir en Google Maps ↗",foot:"Preparado al momento, con cariño · Benijófar",
+open_now:"Abierto ahora · hasta las {c}",opens_today:"Cerrado · abrimos hoy a las {o}",opens_next:"Cerrado · abrimos {d} a las {o}",closed:"Cerrado",
+days:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],tomorrow:"mañana",
+ticker:["Smoothies","Açaí bowls","Zumos naturales","Specialty coffee","Tostadas","Vegan friendly","Hecho al momento","Brunch"],
+wa_msg:"¡Hola Luma! Tengo una pregunta:"},
+en:{nav_fav:"Favourites",nav_menu:"Menu",nav_story:"Our story",nav_visit:"Visit us",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Your moment at",hero_lede:"Smoothies, bowls, fresh juices and toast, made to order with fresh ingredients.",cta_menu:"See the menu",cta_glovo:"Order delivery",tag_reviews:"104 Google reviews",neon_alt:"Luma Brunch neon sign on banana-leaf wallpaper",
+fav_eyebrow:"House favourites",fav_h2:"What everyone orders at Luma",fav_p:"Six dishes to start with. Everything is made to order, so good things can take a little time.",
+menu_eyebrow:"Fresh & homemade",menu_h2:"The menu",lg_v:"Vegan",lg_vg:"Vegetarian",lg_p:"High protein",f_p:"Protein",lg_allerg:"Allergies? Just ask our team.",search_ph:"Search: avocado, matcha, açaí…",empty:"Nothing matches your search.",
+story_eyebrow:"Our philosophy",story_h2:"Good things <em>take time.</em>",story_p1:"At Luma, freshness is our secret ingredient. We believe good food starts with fresh ingredients and a little extra love.",story_p2:"That is why your smoothies, fresh juices and bowls are made from scratch the moment you order. The same goes for our food. If your order takes a little longer, it is because we make it just for you.",story_p3:"Sit down, breathe and enjoy the pause. There is room for a quick coffee or a long brunch with friends.",
+proof_eyebrow:"What people say",proof_h2:"A spot people recommend",proof_google:"Average Google rating, from more than 100 customer reviews.",proof_google_a:"Read the reviews →",proof_vegan:"Very vegan-friendly according to Spinach: vegan toasts, plant milks and a clearly marked menu.",proof_vegan_a:"See vegan options →",proof_ig:"Daily specials, news and changes to our hours: we share it all on Instagram first.",proof_ig_a:"Follow us on Instagram →",
+visit_eyebrow:"See you in Benijófar",visit_h2:"Your next break starts here",visit_note:"Bank holidays and changes to our hours: check our Instagram stories.",cta_route:"Get directions",cta_wa:"WhatsApp",cta_dm:"Message us on Instagram",map_open:"Open in Google Maps ↗",foot:"Made to order, with love · Benijófar",
+open_now:"Open now · until {c}",opens_today:"Closed · opens today at {o}",opens_next:"Closed · opens {d} at {o}",closed:"Closed",
+days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],tomorrow:"tomorrow",
+ticker:["Smoothies","Açaí bowls","Fresh juices","Specialty coffee","Toast","Vegan friendly","Made to order","Brunch"],
+wa_msg:"Hi Luma! I have a question:"},
+nl:{nav_fav:"Favorieten",nav_menu:"De kaart",nav_story:"Ons verhaal",nav_visit:"Bezoek ons",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Jouw moment bij",hero_lede:"Smoothies, bowls, verse sappen en toasts, vers voor je bereid met verse ingrediënten.",cta_menu:"Bekijk de kaart",cta_glovo:"Laat bezorgen",tag_reviews:"104 Google-reviews",neon_alt:"Neonbord van Luma Brunch op behang met bananenbladeren",
+fav_eyebrow:"Favorieten van het huis",fav_h2:"Wat iedereen bestelt bij Luma",fav_p:"Zes gerechten om mee te beginnen. Alles wordt vers bereid, dus goede dingen kosten soms even tijd.",
+menu_eyebrow:"Fresh & homemade",menu_h2:"De kaart",lg_v:"Vegan",lg_vg:"Vegetarisch",lg_p:"Eiwitrijk",f_p:"Eiwitrijk",lg_allerg:"Allergieën? Vraag het ons team.",search_ph:"Zoek: avocado, matcha, açaí…",empty:"Niets gevonden voor je zoekopdracht.",
+story_eyebrow:"Onze filosofie",story_h2:"Goede dingen <em>kosten tijd.</em>",story_p1:"Bij Luma is versheid ons geheime ingrediënt. Wij geloven dat lekker eten begint met verse ingrediënten en een beetje extra liefde.",story_p2:"Daarom maken we je smoothies, verse sappen en bowls helemaal vers zodra je bestelt. Hetzelfde geldt voor onze gerechten. Duurt het iets langer? Dan maken we het speciaal voor jou.",story_p3:"Ga zitten, adem uit en geniet van de pauze. Er is plek voor een snelle koffie of een lange brunch met vrienden.",
+proof_eyebrow:"Wat gasten zeggen",proof_h2:"Een plek die mensen aanraden",proof_google:"Gemiddelde Google-score, uit meer dan 100 reviews van gasten.",proof_google_a:"Lees de reviews →",proof_vegan:"Zeer vegan-vriendelijk volgens Spinach: vegan toasts, plantaardige melk en een duidelijk gemarkeerde kaart.",proof_vegan_a:"Bekijk vegan opties →",proof_ig:"Dagspecials, nieuws en gewijzigde openingstijden: we delen alles eerst op Instagram.",proof_ig_a:"Volg ons op Instagram →",
+visit_eyebrow:"Tot ziens in Benijófar",visit_h2:"Je volgende pauze begint hier",visit_note:"Feestdagen en gewijzigde tijden: bekijk onze Instagram-stories.",cta_route:"Route plannen",cta_wa:"WhatsApp",cta_dm:"Stuur ons een bericht op Instagram",map_open:"Open in Google Maps ↗",foot:"Vers bereid, met liefde · Benijófar",
+open_now:"Nu open · tot {c}",opens_today:"Gesloten · vandaag open om {o}",opens_next:"Gesloten · open {d} om {o}",closed:"Gesloten",
+days:["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"],tomorrow:"morgen",
+ticker:["Smoothies","Açaí bowls","Verse sappen","Specialty coffee","Toasts","Vegan friendly","Vers bereid","Brunch"],
+wa_msg:"Hoi Luma! Ik heb een vraag:"}
+};
+const LANGS=["es","en","nl"];
+const L_IDX={es:0,en:1,nl:2};
+/* colour of each favourite's "plate", taken from its main ingredients */
+const PLATES={"Açaí Bowl":["#5b2a5e",["#f25c78","#3a6fd8","#f2e6b8","#e9d2a0","#f25c78"]],"Pink Dragon":["#e2337f",["#8ccf4d","#3a5fb0","#f6c94a","#fff3d6","#c81d5a"]],"Nordic Dream":["#c9a36a",["#f39a7a","#8fbf5a","#fff5e1","#f39a7a","#e24a2a"]],"Shakshuka":["#c2361e",["#fff8ea","#f4b82a","#fff8ea","#7db36a","#9e2814"]],"Avocado “Croast”":["#c58a3b",["#93b84a","#93b84a","#f6efd6","#f4b82a","#6c9b3a"]],"Tortitas":["#d9a050",["#e74a5b","#fff5ea","#e74a5b","#b97a32","#fff5ea"]]};
+function plateBg(n){const v=PLATES[n];if(!v)return "var(--gold)";const pos=["32% 30%","66% 34%","40% 64%","70% 68%","52% 46%"],sz=[22,18,20,16,14];return v[1].map((c,i)=>"radial-gradient(circle at "+pos[i]+","+c+" 0 "+sz[i]+"%,transparent "+(sz[i]+1)+"%)").join(",")+","+v[0]}
+
+const qs=new URLSearchParams(location.search);
+let lang=(qs.get("lang")||(()=>{try{return localStorage.getItem("luma-lang")}catch(e){return null}})()||(navigator.language||"es").slice(0,2)).toLowerCase();
+if(!LANGS.includes(lang)) lang="es";
+const filters=new Set();
+
+function applyText(){
+  const t=T[lang];document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i]").forEach(el=>{const v=t[el.dataset.i];if(v!=null)el.textContent=v});
+  document.querySelectorAll("[data-i-html]").forEach(el=>{const v=t[el.dataset.iHtml];if(v!=null)el.innerHTML=v});
+  document.querySelectorAll("[data-i-ph]").forEach(el=>el.placeholder=t[el.dataset.iPh]);
+  document.querySelectorAll("[data-i-alt]").forEach(el=>el.alt=t[el.dataset.iAlt]);
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
+  const tk=document.getElementById("ticker");tk.innerHTML="";[...t.ticker,...t.ticker].forEach(w=>{const s=document.createElement("span");s.textContent=w;tk.appendChild(s)});
+  if(WHATSAPP){const u="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(t.wa_msg);["waBtn","waFloat"].forEach(id=>{const a=document.getElementById(id);a.href=u;a.hidden=false})}
+  renderFavs();renderMenu();renderHours();renderStatus();
+}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function badges(tags){const tg=tags.split(" ").filter(Boolean),out=[];
+  if(tg.includes("v"))out.push('<b class="b b-v" title="'+T[lang].lg_v+'">V</b>');
+  else if(tg.includes("vg"))out.push('<b class="b b-vg" title="'+T[lang].lg_vg+'">VG</b>');
+  if(tg.includes("p"))out.push('<b class="b b-p" title="'+T[lang].lg_p+'">P</b>');
+  return out.length?'<span class="badges">'+out.join("")+"</span>":""}
+function renderFavs(){
+  const k=L_IDX[lang],box=document.getElementById("favs");box.innerHTML="";
+  const seen=new Set();
+  LUMA_MENU.forEach(c=>c.i.forEach(it=>{
+    if(!it[7].includes("fav")||seen.has(it[0])||seen.size>=6)return;seen.add(it[0]);
+    const d=it[4+k].split(/(?<=\.)\s|Toppings|Topping|:/)[0];
+    const el=document.createElement("article");el.className="fav";
+    el.innerHTML='<div class="plate" style="background:'+plateBg(it[0])+'"></div><div><h3>'+esc(it[k])+'</h3><div class="price">€ '+it[3]+'</div><p>'+esc(d.length>110?d.slice(0,108)+"…":d)+"</p></div>";
+    box.appendChild(el)}))
+}
+function renderMenu(){
+  const k=L_IDX[lang],q=document.getElementById("q").value.trim().toLowerCase();
+  const menu=document.getElementById("menu"),cats=document.getElementById("cats");menu.innerHTML="";cats.innerHTML="";let shown=0;
+  LUMA_MENU.forEach(c=>{
+    const items=c.i.filter(it=>{const tg=it[7].split(" ");
+      for(const f of filters){if(f==="vg"){if(!(tg.includes("vg")||tg.includes("v")))return false}else if(!tg.includes(f))return false}
+      if(!q)return true;return (it[0]+" "+it[1]+" "+it[2]+" "+it[4]+" "+it[5]+" "+it[6]).toLowerCase().includes(q)});
+    if(!items.length)return;shown+=items.length;
+    const a=document.createElement("a");a.href="#cat-"+c.id;a.textContent=c.t[k];cats.appendChild(a);
+    const s=document.createElement("div");s.className="cat";s.id="cat-"+c.id;
+    s.innerHTML="<h3>"+esc(c.t[k])+"<small>"+items.length+"</small></h3>"+items.map(it=>'<div class="item"><div class="l"><span class="n">'+esc(it[k])+"</span>"+badges(it[7])+'<span class="dots"></span><span class="p">€ '+it[3]+"</span></div>"+(it[4+k]?'<p class="d">'+esc(it[4+k])+"</p>":"")+"</div>").join("")+(!q&&!filters.size?c.n.map(n=>'<p class="note">'+esc(n[k])+"</p>").join(""):"");
+    menu.appendChild(s)});
+  if(!shown)menu.innerHTML='<p class="empty">'+T[lang].empty+"</p>";
+}
+function madridNow(){const p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Madrid",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value;const wd=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(g("weekday"));return{d:wd,m:(+g("hour")%24)*60+ +g("minute")}}
+const toM=s=>{const[a,b]=s.split(":");return a*60+ +b};
+function renderStatus(){const t=T[lang],n=madridNow(),el=document.getElementById("status"),tx=document.getElementById("statusText");
+  const today=OPEN[n.d];el.classList.remove("open");
+  if(today&&n.m>=toM(today[0])&&n.m<toM(today[1])){el.classList.add("open");tx.textContent=t.open_now.replace("{c}",today[1]);return}
+  if(today&&n.m<toM(today[0])){tx.textContent=t.opens_today.replace("{o}",today[0]);return}
+  for(let i=1;i<=7;i++){const d=(n.d+i)%7;if(OPEN[d]){tx.textContent=t.opens_next.replace("{d}",i===1?t.tomorrow:t.days[d].toLowerCase()).replace("{o}",OPEN[d][0]);return}}
+  tx.textContent=t.closed}
+function renderHours(){const t=T[lang],n=madridNow(),tb=document.getElementById("hours");tb.innerHTML="";
+  [1,2,3,4,5,6,0].forEach(d=>{const tr=document.createElement("tr");if(d===n.d)tr.className="today";
+    tr.innerHTML="<td>"+t.days[d]+"</td><td>"+(OPEN[d]?OPEN[d][0]+" – "+OPEN[d][1]:t.closed)+"</td>";tb.appendChild(tr)})}
+
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.lang;try{localStorage.setItem("luma-lang",lang)}catch(e){}applyText()}));
+document.getElementById("q").addEventListener("input",renderMenu);
+document.querySelectorAll(".filt").forEach(b=>b.addEventListener("click",()=>{const f=b.dataset.f;filters.has(f)?filters.delete(f):filters.add(f);b.setAttribute("aria-pressed",filters.has(f));renderMenu()}));
+document.querySelector('a[href="#carta"].more')?.addEventListener("click",()=>{filters.clear();filters.add("v");document.querySelectorAll(".filt").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f==="v"));renderMenu()});
+applyText();setInterval(renderStatus,60000);
+</script>
+</body>
+</html>
