@@ -123,7 +123,11 @@ section{padding-block:88px}
 
 /* favourites */
 .favs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.fav{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;grid-template-columns:86px 1fr;gap:18px;align-items:start}
+.fav{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-rows:auto 1fr;align-items:start}
+.fav .ph{aspect-ratio:4/3;width:100%;position:relative}
+.fav .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fav .tx{padding:18px 20px 22px}
+.fav .tx .plate{display:none}
 .plate{width:86px;height:86px;border-radius:50%;position:relative;box-shadow:inset 0 -6px 0 rgba(0,0,0,.08),0 0 0 6px var(--chip)}
 .plate::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),transparent 40%)}
 .fav h3{font-size:22px}
@@ -132,6 +136,10 @@ section{padding-block:88px}
 @media (max-width:960px){.favs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:620px){.favs{grid-template-columns:1fr}}
 
+.strip{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:14px;margin-top:22px}
+.strip img{width:100%;height:220px;object-fit:cover;border-radius:var(--r);background:var(--chip)}
+.strip img:nth-child(2){border-radius:999px 999px var(--r) var(--r)}
+@media (max-width:700px){.strip{grid-template-columns:1fr 1fr}.strip img{height:160px}}
 /* menu */
 .menu-tools{position:sticky;top:calc(68px + env(safe-area-inset-top,0px));z-index:20;background:var(--bg);padding-block:14px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
 .tool-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -365,6 +373,7 @@ footer small{opacity:.7;display:block;margin-top:6px}
     <div>
       <img src="assets/img/wordmark-cream.png" alt="Luma Brunch" style="height:44px;width:auto">
       <small data-i="foot">Preparado al momento, con cariño · Benijófar</small>
+      <small class="credits">Fotos de ejemplo: Vicky Ng, Puifai Sutawet, Melissa Walker Horn, Toa Heftiba, Natallia Strok, Esra Afşar, Rizky Subagja (Unsplash)</small>
     </div>
     <div class="social">
       <a href="https://www.instagram.com/lumabrunch/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
@@ -417,6 +426,16 @@ wa_msg:"Hoi Luma! Ik heb een vraag:"}
 const LANGS=["es","en","nl"];
 const L_IDX={es:0,en:1,nl:2};
 /* colour of each favourite's "plate", taken from its main ingredients */
+/* ===== Foto's: vervang deze door echte foto's van Luma (zet het bestand in assets/img/ en noem het pad hier).
+   Voorbeeldfoto's van Unsplash (gratis, Unsplash License); fotografen staan in de footer. ===== */
+const PHOTOS={
+ "Açaí Bowl":"https://images.unsplash.com/photo-1627308594190-a057cd4bfac8?w=900&q=75&fm=jpg&fit=crop",
+ "Pink Dragon":"https://images.unsplash.com/photo-1787980342670-5efa8eadf225?w=900&q=75&fm=jpg&fit=crop",
+ "Nordic Dream":"https://images.unsplash.com/photo-1536974471655-0466120eff7f?w=900&q=75&fm=jpg&fit=crop",
+ "Shakshuka":"https://images.unsplash.com/photo-1498602753442-dfa7a49fc9c4?w=900&q=75&fm=jpg&fit=crop",
+ "Avocado “Croast”":"https://images.unsplash.com/photo-1772717737730-85eff61606c8?w=900&q=75&fm=jpg&fit=crop",
+ "Tortitas":"assets/img/tortitas-manzana.jpg"
+};
 const PLATES={"Açaí Bowl":["#5b2a5e",["#f25c78","#3a6fd8","#f2e6b8","#e9d2a0","#f25c78"]],"Pink Dragon":["#e2337f",["#8ccf4d","#3a5fb0","#f6c94a","#fff3d6","#c81d5a"]],"Nordic Dream":["#c9a36a",["#f39a7a","#8fbf5a","#fff5e1","#f39a7a","#e24a2a"]],"Shakshuka":["#c2361e",["#fff8ea","#f4b82a","#fff8ea","#7db36a","#9e2814"]],"Avocado “Croast”":["#c58a3b",["#93b84a","#93b84a","#f6efd6","#f4b82a","#6c9b3a"]],"Tortitas":["#d9a050",["#e74a5b","#fff5ea","#e74a5b","#b97a32","#fff5ea"]]};
 function plateBg(n){const v=PLATES[n];if(!v)return "var(--gold)";const pos=["32% 30%","66% 34%","40% 64%","70% 68%","52% 46%"],sz=[22,18,20,16,14];return v[1].map((c,i)=>"radial-gradient(circle at "+pos[i]+","+c+" 0 "+sz[i]+"%,transparent "+(sz[i]+1)+"%)").join(",")+","+v[0]}
 
@@ -449,7 +468,7 @@ function renderFavs(){
     if(!it[7].includes("fav")||seen.has(it[0])||seen.size>=6)return;seen.add(it[0]);
     const d=it[4+k].split(/(?<=\.)\s|Toppings|Topping|:/)[0];
     const el=document.createElement("article");el.className="fav";
-    el.innerHTML='<div class="plate" style="background:'+plateBg(it[0])+'"></div><div><h3>'+esc(it[k])+'</h3><div class="price">€ '+it[3]+'</div><p>'+esc(d.length>110?d.slice(0,108)+"…":d)+"</p></div>";
+    el.innerHTML='<div class="ph" style="background:linear-gradient(135deg,'+((PLATES[it[0]]||['#c8963e'])[0])+',#0b4425)">'+(PHOTOS[it[0]]?'<img loading="lazy" src="'+PHOTOS[it[0]]+'" alt="'+esc(it[k])+'" onerror="this.remove()">':'')+'</div>'+'<div class="tx"><h3>'+esc(it[k])+'</h3><div class="price">€ '+it[3]+'</div><p>'+esc(d.length>110?d.slice(0,108)+"…":d)+"</p></div>";
     box.appendChild(el)}))
 }
 function renderMenu(){
