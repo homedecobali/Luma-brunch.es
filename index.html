@@ -18,7 +18,7 @@
 <link rel="alternate" hreflang="nl" href="https://luma-brunch.es/?lang=nl">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;700&family=Cabin+Sketch:wght@700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Luma Brunch","image":"https://luma-brunch.es/assets/img/logo-badge.jpg","url":"https://luma-brunch.es/","servesCuisine":["Brunch","Breakfast","Healthy","Smoothies","Coffee"],"priceRange":"€","address":{"@type":"PostalAddress","streetAddress":"C. Aneto, Local 13","postalCode":"03178","addressLocality":"Benijófar","addressRegion":"Alicante","addressCountry":"ES"},"geo":{"@type":"GeoCoordinates","latitude":38.082498,"longitude":-0.734103},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"16:00"}],"sameAs":["https://www.instagram.com/lumabrunch/","https://www.facebook.com/profile.php?id=61552408986800"],"hasMenu":"https://luma-brunch.es/#carta"}
 </script>
@@ -275,6 +275,23 @@ main{overflow-x:clip}
 .reel:hover{rotate:0deg;scale:1.03}
 .reel video{display:block;width:100%;height:100%;object-fit:cover}
 @media (max-width:620px){.reel{width:150px;border-width:5px;border-radius:20px}}
+.board-sec{padding-block:50px 30px}
+.board{position:relative;max-width:540px;margin:40px auto 0;padding:34px 40px 30px;border-radius:10px;rotate:-2.5deg;
+  background:radial-gradient(ellipse at 22% 18%,rgba(255,255,255,.07),transparent 45%),radial-gradient(ellipse at 78% 82%,rgba(255,255,255,.05),transparent 50%),radial-gradient(ellipse at 60% 40%,rgba(255,255,255,.04),transparent 30%),#26332c;
+  border:16px solid #9a6a3a;border-image:linear-gradient(135deg,#b07a44,#7c5129 40%,#a9733e 70%,#6e4622) 1;
+  box-shadow:0 30px 60px -28px rgba(0,0,0,.6),inset 0 0 40px rgba(0,0,0,.45);color:#f4f1ea;font-family:"Caveat",cursive;transition:rotate .5s}
+.board:hover{rotate:-1deg}
+.board::before{content:"";position:absolute;left:50%;top:-78px;width:300px;height:62px;translate:-50% 0;background:linear-gradient(to top left,transparent calc(50% - 1.5px),#7a6a55 calc(50% - 1px),#7a6a55 calc(50% + 1px),transparent calc(50% + 1.5px)) left/50% 100% no-repeat,linear-gradient(to top right,transparent calc(50% - 1.5px),#7a6a55 calc(50% - 1px),#7a6a55 calc(50% + 1px),transparent calc(50% + 1.5px)) right/50% 100% no-repeat}
+.board::after{content:"";position:absolute;left:50%;top:-86px;width:14px;height:14px;translate:-50% 0;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e6c17a,#9c6f27)}
+.board h2{font:700 clamp(34px,6vw,46px)/1 "Cabin Sketch",var(--f-display);text-align:center;color:#fff;letter-spacing:.02em;text-shadow:0 0 1px rgba(255,255,255,.6),0 0 6px rgba(255,255,255,.15);margin-bottom:18px}
+.board ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.board li{display:flex;align-items:baseline;gap:10px;font-size:clamp(23px,4.2vw,28px);font-weight:500;line-height:1.25;opacity:.93;text-shadow:0 0 1px rgba(255,255,255,.5)}
+.board li:nth-child(odd){rotate:-.6deg}.board li:nth-child(even){rotate:.5deg}
+.board li .dl{flex:1;border-bottom:2px dashed rgba(244,241,234,.35);translate:0 -6px;min-width:20px}
+.board li b{font-weight:700;color:#f6d98f;white-space:nowrap}
+.board .board-foot{text-align:center;font-size:24px;color:#a8e6c1;margin-top:14px;rotate:-2deg}
+.board .chalk{position:absolute;right:26px;bottom:-14px;width:46px;height:11px;border-radius:3px;background:linear-gradient(#fff,#ddd);rotate:-8deg;box-shadow:0 2px 3px rgba(0,0,0,.4)}
+@media (max-width:620px){.board{padding:26px 20px 24px;border-width:12px;rotate:-2deg}.board::before{top:-66px;height:54px;width:220px}.board::after{top:-74px}.board li{gap:6px}}
 </style>
 </head>
 <body>
@@ -351,6 +368,17 @@ main{overflow-x:clip}
         <figure style="--i:4;--k:1;--a:1"><img src="assets/img/fotos/shakshuka-s.jpg" alt="Shakshuka" loading="lazy"><figcaption>Shakshuka</figcaption></figure>
         <figure style="--i:5;--k:2;--a:2"><img src="assets/img/fotos/pink-dragon-s.jpg" alt="Pink Dragon" loading="lazy"><figcaption>Pink Dragon</figcaption></figure>
         <figure style="--i:6;--k:3;--a:3"><img src="assets/img/fotos/croissants-s.jpg" alt="Croissants" loading="lazy"><figcaption>Croissants</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="board-sec" aria-labelledby="boardTitle">
+    <div class="wrap">
+      <div class="board">
+        <h2 id="boardTitle" data-i="board_h">Hoy en la pizarra</h2>
+        <ul id="boardList"></ul>
+        <p class="board-foot" data-i="board_foot">Todo hecho al momento ♥</p>
+        <span class="chalk" aria-hidden="true"></span>
       </div>
     </div>
   </section>
@@ -515,7 +543,7 @@ fav_eyebrow:"Los favoritos de la casa",fav_h2:"Lo que más se pide en Luma",fav_
 menu_eyebrow:"Fresh & homemade",menu_h2:"La carta",lg_v:"Vegano",lg_vg:"Vegetariano",lg_p:"Rico en proteína",f_p:"Proteína",lg_allerg:"¿Alergias? Pregunta a nuestro equipo.",search_ph:"Busca: aguacate, matcha, açaí…",empty:"Nada coincide con tu búsqueda.",
 story_eyebrow:"Nuestra filosofía",story_h2:"Lo bueno <em>necesita tiempo.</em>",story_p1:"En Luma, la frescura es nuestro ingrediente secreto. Creemos que la buena comida empieza con ingredientes frescos y un poquito más de cariño.",story_p2:"Por eso preparamos tus smoothies, zumos naturales y bowls desde cero en el momento en que los pides. Y lo mismo con nuestros platos. Si tu pedido tarda un poco más, es porque lo hacemos especialmente para ti.",story_p3:"Siéntate, respira y disfruta de la pausa. Hay sitio para un café rápido o para un brunch largo con amigos.",
 proof_eyebrow:"Lo que dicen de Luma",proof_h2:"Un rincón que la gente recomienda",proof_google:"Valoración media en Google, con más de 100 reseñas de clientes.",proof_google_a:"Leer las reseñas →",proof_vegan:"Muy recomendable para veganos según Spinach: tostadas veganas, bebidas vegetales y la carta claramente marcada.",proof_vegan_a:"Ver opciones veganas →",proof_ig:"Platos del día, novedades y cambios de horario: todo lo compartimos primero en Instagram.",proof_ig_a:"Síguenos en Instagram →",
-visit_eyebrow:"Nos vemos en Benijófar",visit_h2:"Tu próxima pausa empieza aquí",visit_note:"Sin reservas: ven cuando quieras. Festivos y cambios de horario en nuestras historias de Instagram.",cta_route:"Cómo llegar",cta_wa:"WhatsApp",cta_dm:"Escríbenos en Instagram",map_open:"Ver mapa grande ↗",fan_eyebrow:"Recién hecho en Luma",fan_h2:"Un vistazo a nuestra barra",strip_a:"Más fotos en Instagram @lumabrunch →",qr_h:"¿Te ha gustado? Déjanos tu reseña",qr_p:"Escanea el código con tu móvil o pulsa el botón. Solo tarda un minuto y nos ayuda muchísimo.",qr_btn:"Escribir una reseña en Google",reels_eyebrow:"Luma en movimiento",reels_h2:"Así se vive una mañana en Luma",foot:"Preparado al momento, con cariño · Benijófar",
+visit_eyebrow:"Nos vemos en Benijófar",visit_h2:"Tu próxima pausa empieza aquí",visit_note:"Sin reservas: ven cuando quieras. Festivos y cambios de horario en nuestras historias de Instagram.",cta_route:"Cómo llegar",cta_wa:"WhatsApp",cta_dm:"Escríbenos en Instagram",map_open:"Ver mapa grande ↗",fan_eyebrow:"Recién hecho en Luma",fan_h2:"Un vistazo a nuestra barra",strip_a:"Más fotos en Instagram @lumabrunch →",qr_h:"¿Te ha gustado? Déjanos tu reseña",qr_p:"Escanea el código con tu móvil o pulsa el botón. Solo tarda un minuto y nos ayuda muchísimo.",qr_btn:"Escribir una reseña en Google",reels_eyebrow:"Luma en movimiento",reels_h2:"Así se vive una mañana en Luma",board_h:"Hoy en la pizarra",board_foot:"Todo hecho al momento ♥",foot:"Preparado al momento, con cariño · Benijófar",
 open_now:"Abierto ahora · hasta las {c}",opens_today:"Cerrado · abrimos hoy a las {o}",opens_next:"Cerrado · abrimos {d} a las {o}",closed:"Cerrado",
 days:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],tomorrow:"mañana",
 ticker:["Smoothies","Açaí bowls","Zumos naturales","Specialty coffee","Tostadas","Vegan friendly","Hecho al momento","Brunch"],
@@ -525,7 +553,7 @@ fav_eyebrow:"House favourites",fav_h2:"What everyone orders at Luma",fav_p:"Six 
 menu_eyebrow:"Fresh & homemade",menu_h2:"The menu",lg_v:"Vegan",lg_vg:"Vegetarian",lg_p:"High protein",f_p:"Protein",lg_allerg:"Allergies? Just ask our team.",search_ph:"Search: avocado, matcha, açaí…",empty:"Nothing matches your search.",
 story_eyebrow:"Our philosophy",story_h2:"Good things <em>take time.</em>",story_p1:"At Luma, freshness is our secret ingredient. We believe good food starts with fresh ingredients and a little extra love.",story_p2:"That is why your smoothies, fresh juices and bowls are made from scratch the moment you order. The same goes for our food. If your order takes a little longer, it is because we make it just for you.",story_p3:"Sit down, breathe and enjoy the pause. There is room for a quick coffee or a long brunch with friends.",
 proof_eyebrow:"What people say",proof_h2:"A spot people recommend",proof_google:"Average Google rating, from more than 100 customer reviews.",proof_google_a:"Read the reviews →",proof_vegan:"Very vegan-friendly according to Spinach: vegan toasts, plant milks and a clearly marked menu.",proof_vegan_a:"See vegan options →",proof_ig:"Daily specials, news and changes to our hours: we share it all on Instagram first.",proof_ig_a:"Follow us on Instagram →",
-visit_eyebrow:"See you in Benijófar",visit_h2:"Your next break starts here",visit_note:"No reservations needed, just walk in. Bank holidays and changes to our hours are in our Instagram stories.",cta_route:"Get directions",cta_wa:"WhatsApp",cta_dm:"Message us on Instagram",map_open:"View larger map ↗",fan_eyebrow:"Freshly made at Luma",fan_h2:"A peek at our counter",strip_a:"More photos on Instagram @lumabrunch →",qr_h:"Enjoyed it? Leave us a review",qr_p:"Scan the code with your phone or tap the button. It only takes a minute and helps us a lot.",qr_btn:"Write a Google review",reels_eyebrow:"Luma in motion",reels_h2:"A morning at Luma",foot:"Made to order, with love · Benijófar",
+visit_eyebrow:"See you in Benijófar",visit_h2:"Your next break starts here",visit_note:"No reservations needed, just walk in. Bank holidays and changes to our hours are in our Instagram stories.",cta_route:"Get directions",cta_wa:"WhatsApp",cta_dm:"Message us on Instagram",map_open:"View larger map ↗",fan_eyebrow:"Freshly made at Luma",fan_h2:"A peek at our counter",strip_a:"More photos on Instagram @lumabrunch →",qr_h:"Enjoyed it? Leave us a review",qr_p:"Scan the code with your phone or tap the button. It only takes a minute and helps us a lot.",qr_btn:"Write a Google review",reels_eyebrow:"Luma in motion",reels_h2:"A morning at Luma",board_h:"On the board today",board_foot:"All made to order ♥",foot:"Made to order, with love · Benijófar",
 open_now:"Open now · until {c}",opens_today:"Closed · opens today at {o}",opens_next:"Closed · opens {d} at {o}",closed:"Closed",
 days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],tomorrow:"tomorrow",
 ticker:["Smoothies","Açaí bowls","Fresh juices","Specialty coffee","Toast","Vegan friendly","Made to order","Brunch"],
@@ -535,7 +563,7 @@ fav_eyebrow:"Favorieten van het huis",fav_h2:"Wat iedereen bestelt bij Luma",fav
 menu_eyebrow:"Fresh & homemade",menu_h2:"De kaart",lg_v:"Vegan",lg_vg:"Vegetarisch",lg_p:"Eiwitrijk",f_p:"Eiwitrijk",lg_allerg:"Allergieën? Vraag het ons team.",search_ph:"Zoek: avocado, matcha, açaí…",empty:"Niets gevonden voor je zoekopdracht.",
 story_eyebrow:"Onze filosofie",story_h2:"Goede dingen <em>kosten tijd.</em>",story_p1:"Bij Luma is versheid ons geheime ingrediënt. Wij geloven dat lekker eten begint met verse ingrediënten en een beetje extra liefde.",story_p2:"Daarom maken we je smoothies, verse sappen en bowls helemaal vers zodra je bestelt. Hetzelfde geldt voor onze gerechten. Duurt het iets langer? Dan maken we het speciaal voor jou.",story_p3:"Ga zitten, adem uit en geniet van de pauze. Er is plek voor een snelle koffie of een lange brunch met vrienden.",
 proof_eyebrow:"Wat gasten zeggen",proof_h2:"Een plek die mensen aanraden",proof_google:"Gemiddelde Google-score, uit meer dan 100 reviews van gasten.",proof_google_a:"Lees de reviews →",proof_vegan:"Zeer vegan-vriendelijk volgens Spinach: vegan toasts, plantaardige melk en een duidelijk gemarkeerde kaart.",proof_vegan_a:"Bekijk vegan opties →",proof_ig:"Dagspecials, nieuws en gewijzigde openingstijden: we delen alles eerst op Instagram.",proof_ig_a:"Volg ons op Instagram →",
-visit_eyebrow:"Tot ziens in Benijófar",visit_h2:"Je volgende pauze begint hier",visit_note:"Reserveren is niet nodig, loop gewoon binnen. Feestdagen en gewijzigde tijden staan in onze Instagram-stories.",cta_route:"Route plannen",cta_wa:"WhatsApp",cta_dm:"Stuur ons een bericht op Instagram",map_open:"Grotere kaart ↗",fan_eyebrow:"Vers gemaakt bij Luma",fan_h2:"Een kijkje aan onze bar",strip_a:"Meer foto’s op Instagram @lumabrunch →",qr_h:"Lekker gegeten? Laat een review achter",qr_p:"Scan de code met je telefoon of tik op de knop. Het kost maar een minuutje en helpt ons enorm.",qr_btn:"Schrijf een Google-review",reels_eyebrow:"Luma in beweging",reels_h2:"Zo voelt een ochtend bij Luma",foot:"Vers bereid, met liefde · Benijófar",
+visit_eyebrow:"Tot ziens in Benijófar",visit_h2:"Je volgende pauze begint hier",visit_note:"Reserveren is niet nodig, loop gewoon binnen. Feestdagen en gewijzigde tijden staan in onze Instagram-stories.",cta_route:"Route plannen",cta_wa:"WhatsApp",cta_dm:"Stuur ons een bericht op Instagram",map_open:"Grotere kaart ↗",fan_eyebrow:"Vers gemaakt bij Luma",fan_h2:"Een kijkje aan onze bar",strip_a:"Meer foto’s op Instagram @lumabrunch →",qr_h:"Lekker gegeten? Laat een review achter",qr_p:"Scan de code met je telefoon of tik op de knop. Het kost maar een minuutje en helpt ons enorm.",qr_btn:"Schrijf een Google-review",reels_eyebrow:"Luma in beweging",reels_h2:"Zo voelt een ochtend bij Luma",board_h:"Vandaag op het bord",board_foot:"Alles vers voor je gemaakt ♥",foot:"Vers bereid, met liefde · Benijófar",
 open_now:"Nu open · tot {c}",opens_today:"Gesloten · vandaag open om {o}",opens_next:"Gesloten · open {d} om {o}",closed:"Gesloten",
 days:["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"],tomorrow:"morgen",
 ticker:["Smoothies","Açaí bowls","Verse sappen","Specialty coffee","Toasts","Vegan friendly","Vers bereid","Brunch"],
@@ -573,7 +601,7 @@ function applyText(){
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
   const tk=document.getElementById("ticker");tk.innerHTML="";[...t.ticker,...t.ticker].forEach(w=>{const s=document.createElement("span");s.textContent=w;tk.appendChild(s)});
   if(WHATSAPP){const u="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(t.wa_msg);["waBtn","waFloat"].forEach(id=>{const a=document.getElementById(id);a.href=u;a.hidden=false})}
-  renderFavs();renderMenu();renderHours();renderStatus();
+  renderFavs();renderMenu();renderHours();renderStatus();renderBoard();
 }
 function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function badges(tags){const tg=tags.split(" ").filter(Boolean),out=[];
@@ -591,6 +619,11 @@ function renderFavs(){
     el.innerHTML='<div class="ph" style="background:linear-gradient(135deg,'+((PLATES[it[0]]||['#c8963e'])[0])+',#0b4425)">'+(PHOTOS[it[0]]?'<img loading="lazy" src="'+PHOTOS[it[0]]+'" alt="'+esc(it[k])+'" onerror="this.remove()">':'')+'</div>'+'<div class="tx"><h3>'+esc(it[k])+'</h3><div class="price">€ '+it[3]+'</div><p>'+esc(d.length>110?d.slice(0,108)+"…":d)+"</p></div>";
     box.appendChild(el)}))
 }
+/* Schoolbord: Spaanse namen uit menu.js; naam en prijs komen automatisch uit de kaart */
+const BOARD=["Shakshuka","Nordic Dream","Avocado “Croast”","Açaí Bowl","Pink Dragon","Flat white","Matcha latte","Rollo de canela"];
+function renderBoard(){const k=L_IDX[lang],ul=document.getElementById("boardList");ul.innerHTML="";
+  BOARD.forEach(n=>{let it=null;LUMA_MENU.some(c=>(it=c.i.find(x=>x[0]===n)));if(!it)return;
+    const li=document.createElement("li");li.innerHTML="<span>"+esc(it[k])+'</span><span class="dl"></span><b>'+it[3]+" €</b>";ul.appendChild(li)})}
 function renderMenu(){
   const k=L_IDX[lang],q=document.getElementById("q").value.trim().toLowerCase();
   const menu=document.getElementById("menu"),cats=document.getElementById("cats");menu.innerHTML="";cats.innerHTML="";let shown=0;
