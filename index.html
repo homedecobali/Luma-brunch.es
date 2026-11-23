@@ -782,8 +782,19 @@ function renderHours(){const t=T[lang],n=madridNow(),tb=document.getElementById(
     tr.innerHTML="<td>"+t.days[d]+"</td><td>"+(OPEN[d]?OPEN[d][0]+" – "+OPEN[d][1]:t.closed)+"</td>";tb.appendChild(tr)})}
 
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.lang;try{localStorage.setItem("luma-lang",lang)}catch(e){}applyText()}));
-document.getElementById("q").addEventListener("input",renderMenu);
-document.querySelectorAll(".filt").forEach(b=>b.addEventListener("click",()=>{const f=b.dataset.f;filters.has(f)?filters.delete(f):filters.add(f);b.setAttribute("aria-pressed",filters.has(f));renderMenu()}));
+/* De zoekbalk + categorieknoppen blijven bovenin plakken. Daarom zelf scrollen, zodat een categorie
+   (of het zoekresultaat) direct ónder die balk begint en er niet achter verdwijnt. */
+function menuOffset(){const h=document.querySelector("header.top"),t=document.querySelector(".menu-tools");
+  return (h?h.getBoundingClientRect().bottom:0)+(t?t.offsetHeight:0)+12}
+function scrollMenuTo(el,instant){if(!el)return;const y=window.scrollY+el.getBoundingClientRect().top-menuOffset();
+  window.scrollTo({top:Math.max(0,y),behavior:instant||matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"})}
+function showResults(){const m=document.getElementById("menu");if(m.getBoundingClientRect().top<menuOffset())scrollMenuTo(m,true)}
+document.getElementById("cats").addEventListener("click",e=>{const a=e.target.closest("a[href^='#cat-']");if(!a)return;e.preventDefault();
+  document.querySelectorAll("#cats a").forEach(x=>x.classList.toggle("on",x===a));
+  scrollMenuTo(document.getElementById(a.getAttribute("href").slice(1)))});
+document.getElementById("q").addEventListener("input",()=>{renderMenu();showResults()});
+document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();e.target.blur();scrollMenuTo(document.getElementById("menu"))}});
+document.querySelectorAll(".filt").forEach(b=>b.addEventListener("click",()=>{const f=b.dataset.f;filters.has(f)?filters.delete(f):filters.add(f);b.setAttribute("aria-pressed",filters.has(f));renderMenu();showResults()}));
 document.querySelector('a[href="#carta"].more')?.addEventListener("click",()=>{filters.clear();filters.add("v");document.querySelectorAll(".filt").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f==="v"));renderMenu()});
 applyText();setInterval(renderStatus,60000);
 (()=>{const RM=matchMedia("(prefers-reduced-motion: reduce)").matches,vs=document.querySelectorAll("video[data-auto]");
