@@ -752,6 +752,7 @@
   /* ================= START ================= */
   LK.start = async function () {
     await db.init();
+    if (db.kv("seeded") && db.kv("demoDataVersion") !== CFG.demoDataVersion) await db.wipe();   // testfase: nieuwe demo-indeling
     if (!db.kv("seeded")) await LK.seed();
     try { const id = sessionStorage.getItem("luma-kassa-user"); const s = id && staffById(id); if (s) { S.user = s; return renderApp(); } } catch (e) {}
     renderLogin();

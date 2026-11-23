@@ -75,7 +75,7 @@
       }
     }
     // open tafels nu
-    const open = [["3", 38, "ana"], ["5", 14, "carlos"], ["12", 92, "ana"], ["15", 6, "carlos"]];
+    const open = [["3", 38, "ana"], ["7", 14, "carlos"], ["T2", 92, "ana"], ["T6", 6, "carlos"]];
     for (const [id, mins, st] of open) {
       await db.put("orders", { id, table: { id, label: id }, lines: basket(), openedAt: new Date(now - mins * 60000).toISOString(), staffId: st, updatedAt: now.toISOString() });
     }
@@ -83,5 +83,6 @@
     db.all("outbox").forEach((r) => { r.status = "sent"; db.put("outbox", r); });
     db.all("records").slice(-3).forEach((r) => db.enqueue("record", { id: r.id }));
     await db.kv("seeded", now.toISOString());
+    await db.kv("demoDataVersion", CFG.demoDataVersion);
   };
 })();

@@ -51,31 +51,37 @@ LK.CONFIG = {
     staff:   { week: false, layout: false, close: false, rectify: false }
   },
 
-  /* Plattegrond (AANNAME, Rick levert de echte indeling). x/y in % van het vlak. */
+  /* Demo-data: verhoog dit getal om de voorbeelddata op alle toestellen opnieuw te laten aanmaken. */
+  demoDataVersion: 2,
+
+  /* Plattegrond (indeling van Rick, 23-11-2026; de eigenaar kan hem in de kassa zelf aanpassen). x/y in % van het vlak. */
   zones: [
     { id: "in",  t: ["Interior", "Inside", "Binnen"],
-      fixtures: [ { label: ["Barra", "Counter", "Bar"], x: 3, y: 74, w: 40, h: 18 },
+      fixtures: [ { label: ["Barra", "Counter", "Bar"], x: 3, y: 74, w: 55, h: 18 },
                   { label: ["Entrada", "Entrance", "Ingang"], x: 82, y: 86, w: 15, h: 10 } ] },
     { id: "out", t: ["Terraza", "Terrace", "Terras"],
       fixtures: [ { label: ["Calle", "Street", "Straat"], x: 2, y: 88, w: 96, h: 9 } ] }
   ],
   tables: [
-    { id: "1",  zone: "in",  x: 14, y: 22, w: 108, h: 92, seats: 2, shape: "sq" },
-    { id: "2",  zone: "in",  x: 32, y: 22, w: 108, h: 92, seats: 2, shape: "sq" },
-    { id: "3",  zone: "in",  x: 52, y: 22, w: 140, h: 104, seats: 4, shape: "sq" },
-    { id: "4",  zone: "in",  x: 74, y: 22, w: 140, h: 104, seats: 4, shape: "sq" },
-    { id: "5",  zone: "in",  x: 62, y: 56, w: 112, h: 112, seats: 4, shape: "round" },
-    { id: "6",  zone: "in",  x: 84, y: 56, w: 112, h: 112, seats: 4, shape: "round" },
-    { id: "7",  zone: "in",  x: 18, y: 52, w: 200, h: 96, seats: 6, shape: "sq" },
-    { id: "B1", zone: "in",  x: 54, y: 83, w: 86, h: 74, seats: 1, shape: "round" },
-    { id: "B2", zone: "in",  x: 66, y: 83, w: 86, h: 74, seats: 1, shape: "round" },
-    { id: "11", zone: "out", x: 14, y: 26, w: 116, h: 116, seats: 2, shape: "round" },
-    { id: "12", zone: "out", x: 34, y: 26, w: 116, h: 116, seats: 2, shape: "round" },
-    { id: "13", zone: "out", x: 54, y: 26, w: 116, h: 116, seats: 4, shape: "round" },
-    { id: "14", zone: "out", x: 74, y: 26, w: 116, h: 116, seats: 4, shape: "round" },
-    { id: "15", zone: "out", x: 24, y: 62, w: 150, h: 104, seats: 4, shape: "sq" },
-    { id: "16", zone: "out", x: 50, y: 62, w: 150, h: 104, seats: 4, shape: "sq" },
-    { id: "17", zone: "out", x: 78, y: 62, w: 200, h: 104, seats: 6, shape: "sq" }
+    /* Binnen: 6 tafels van 4 en 1 grote tafel van 8 */
+    { id: "1",  zone: "in",  x: 14, y: 22, w: 140, h: 104, seats: 4, shape: "sq" },
+    { id: "2",  zone: "in",  x: 36, y: 22, w: 140, h: 104, seats: 4, shape: "sq" },
+    { id: "3",  zone: "in",  x: 58, y: 22, w: 140, h: 104, seats: 4, shape: "sq" },
+    { id: "4",  zone: "in",  x: 14, y: 52, w: 140, h: 104, seats: 4, shape: "sq" },
+    { id: "5",  zone: "in",  x: 36, y: 52, w: 140, h: 104, seats: 4, shape: "sq" },
+    { id: "6",  zone: "in",  x: 58, y: 52, w: 140, h: 104, seats: 4, shape: "sq" },
+    { id: "7",  zone: "in",  x: 85, y: 40, w: 128, h: 250, seats: 8, shape: "sq" },
+    /* Terras: 10 tafeltjes van 2 */
+    { id: "T1",  zone: "out", x: 12, y: 26, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T2",  zone: "out", x: 31, y: 26, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T3",  zone: "out", x: 50, y: 26, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T4",  zone: "out", x: 69, y: 26, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T5",  zone: "out", x: 88, y: 26, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T6",  zone: "out", x: 12, y: 60, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T7",  zone: "out", x: 31, y: 60, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T8",  zone: "out", x: 50, y: 60, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T9",  zone: "out", x: 69, y: 60, w: 100, h: 88, seats: 2, shape: "sq" },
+    { id: "T10", zone: "out", x: 88, y: 60, w: 100, h: 88, seats: 2, shape: "sq" }
   ],
 
   /* Extra's per categorie (uit de kaartnotities). Prijs in euro. */
