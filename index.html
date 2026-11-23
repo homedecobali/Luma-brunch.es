@@ -308,6 +308,51 @@ main{overflow-x:clip}
 .board .board-foot{text-align:center;font-size:24px;color:#a8e6c1;margin-top:14px;rotate:-2deg}
 .board .chalk{position:absolute;right:26px;bottom:-14px;width:46px;height:11px;border-radius:3px;background:linear-gradient(#fff,#ddd);rotate:-8deg;box-shadow:0 2px 3px rgba(0,0,0,.4)}
 @media (max-width:620px){.board{padding:26px 20px 24px;border-width:12px;rotate:-2deg}.board::before{top:-66px;height:54px;width:220px}.board::after{top:-74px}.board li{gap:6px}}
+/* ===== Club Luma: e-mail pop-up (verschijnt rond 50% scrollen, één keer per bezoeker) ===== */
+.club{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:rgba(6,30,18,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;transition:opacity .3s ease}
+.club.show{opacity:1}
+.club-card{position:relative;width:min(100%,760px);display:grid;grid-template-columns:.9fr 1.1fr;background:var(--surface);color:var(--fg);border-radius:28px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.55);border:2px solid var(--gold);transform:translateY(24px) scale(.98);transition:transform .4s cubic-bezier(.2,.9,.3,1.2)}
+.club.show .club-card{transform:none}
+.club-pic{position:relative;min-height:100%;background:var(--green) url(assets/img/leaves.jpg) center/cover}
+.club-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,68,37,0) 45%,rgba(11,68,37,.55))}
+.club-pic .arch-ph{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:76%;aspect-ratio:3/4;border-radius:999px 999px 0 0;border:6px solid var(--gold);border-bottom:0;overflow:hidden;background:var(--cream)}
+.club-pic .arch-ph img{width:100%;height:100%;object-fit:cover}
+.club-pic .stamp{position:absolute;z-index:2;top:18px;left:18px;width:92px;height:92px;border-radius:50%;background:var(--gold);color:#0b4425;display:grid;place-items:center;text-align:center;font:700 13px/1.05 var(--f-display);letter-spacing:.02em;transform:rotate(-12deg);box-shadow:0 8px 20px -8px rgba(0,0,0,.5);border:2px dashed rgba(11,68,37,.45)}
+.club-pic .stamp b{display:block;font-size:30px;line-height:1}
+.club-body{padding:34px 32px 26px;display:flex;flex-direction:column;gap:14px}
+.club-body .mark{width:46px;height:auto}
+.club-body h2{font-size:clamp(26px,3.4vw,34px);color:var(--accent)}
+.club-body h2 em{font-style:normal;color:var(--gold)}
+.club-body p.lede{color:var(--muted);font-size:15.5px}
+.club-perks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14.5px}
+.club-perks li{display:flex;gap:10px;align-items:flex-start}
+.club-perks li::before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b4425' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+.club-form{display:grid;gap:10px;margin-top:2px}
+.club-row{display:flex;gap:8px;flex-wrap:wrap}
+.club-row input[type=email]{flex:1 1 200px;min-width:0;padding:13px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);font:500 16px/1.2 var(--f-body)}
+.club-row input[type=email]:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,150,62,.3)}
+.club-row .btn{flex:0 0 auto;justify-content:center}
+.club-ok{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.45;color:var(--muted);cursor:pointer}
+.club-ok input{flex:none;width:18px;height:18px;margin:1px 0 0;accent-color:var(--green)}
+.club-err{color:#b3261e;font-size:13px;font-weight:600}
+.club-no{align-self:flex-start;background:none;border:0;padding:4px 0;color:var(--muted);font:500 13.5px/1 var(--f-body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.club-x{position:absolute;z-index:3;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--surface);color:var(--fg);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px -6px rgba(0,0,0,.4)}
+.club-x svg{width:18px;height:18px}
+.club-thanks{display:grid;gap:10px}
+.club-thanks h2{font-size:30px}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .club-err{color:#ffb4a9}}
+:root[data-theme="dark"] .club-err{color:#ffb4a9}
+@media (max-width:700px){
+  .club{place-items:end center;padding:0}
+  .club-card{grid-template-columns:1fr;border-radius:26px 26px 0 0;border-width:2px 0 0;max-height:92vh;max-height:92dvh;overflow-y:auto;transform:translateY(100%)}
+  .club-pic{height:150px;min-height:0}
+  .club-pic .arch-ph{width:44%;aspect-ratio:auto;height:128px}
+  .club-pic .stamp{width:74px;height:74px;font-size:11px;top:14px;left:14px}.club-pic .stamp b{font-size:24px}
+  .club-body{padding:20px 18px calc(18px + env(safe-area-inset-bottom,0px));gap:11px}
+  .club-body .mark{display:none}
+  .club-row .btn{flex:1 1 100%}
+}
 </style>
 </head>
 <body>
@@ -548,6 +593,42 @@ main{overflow-x:clip}
 
 <a class="float-wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
 
+<!-- ===== Club Luma pop-up ===== -->
+<div class="club" id="club" hidden role="dialog" aria-modal="true" aria-labelledby="clubTitle">
+  <div class="club-card">
+    <button type="button" class="club-x" id="clubX" aria-label="Cerrar" data-i-aria="club_close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="club-pic" aria-hidden="true">
+      <div class="stamp"><span><b>%</b><span data-i="club_stamp">Club Luma</span></span></div>
+      <div class="arch-ph"><img src="assets/img/fotos/pink-dragon-bowl-s.jpg" alt="" loading="lazy"></div>
+    </div>
+    <div class="club-body">
+      <div id="clubStep1" style="display:contents">
+        <img class="mark" src="assets/img/mark-green.png" alt="">
+        <p class="eyebrow left" data-i="club_eyebrow">Club Luma</p>
+        <h2 id="clubTitle" data-i-html="club_h2">¿Te apetece un <em>descuento?</em></h2>
+        <p class="lede" data-i="club_lede">Déjanos tu email y entra en el Club Luma.</p>
+        <ul class="club-perks"><li data-i="club_p1">Cupones de descuento solo para el club</li><li data-i="club_p2">Los platos nuevos, antes que nadie</li><li data-i="club_p3">Lo que pasa en Luma: eventos y sorpresas</li></ul>
+        <form class="club-form" id="clubForm" novalidate>
+          <div class="club-row">
+            <input type="email" name="EMAIL" id="clubEmail" required autocomplete="email" inputmode="email" placeholder="tu@email.com" data-i-ph="club_ph" aria-label="Email">
+            <button class="btn btn-primary" type="submit" id="clubSend"><span data-i="club_btn">¡Me apunto!</span></button>
+          </div>
+          <input class="hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="club-ok"><input type="checkbox" id="clubOk" name="OPT_IN" value="1" required><span data-i="club_consent">Quiero recibir emails de Luma Brunch con descuentos y novedades. Puedo darme de baja cuando quiera con un clic. Usamos tu email solo para esto.</span></label>
+          <p class="club-err" id="clubErr" role="alert" hidden></p>
+        </form>
+        <button type="button" class="club-no" id="clubNo" data-i="club_no">No, gracias</button>
+      </div>
+      <div class="club-thanks" id="clubStep2" hidden>
+        <img class="mark" src="assets/img/mark-green.png" alt="">
+        <h2 data-i="club_ty_h">¡Bienvenido al club!</h2>
+        <p class="lede" data-i="club_ty_p">Revisa tu bandeja de entrada y confirma tu email. Así te llega tu primer cupón.</p>
+        <button type="button" class="btn btn-primary" id="clubDone" style="justify-self:start"><span data-i="club_ty_btn">Seguir mirando</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="assets/menu.js"></script>
 <script>
 /* ===== Ajustes: rellena el número de WhatsApp (formato internacional, sin + ni espacios) para mostrar los botones ===== */
@@ -555,7 +636,7 @@ const WHATSAPP = ""; // p. ej. "34600000000"
 const OPEN = {1:["09:00","16:00"],2:["09:00","16:00"],3:["09:00","16:00"],4:["09:00","16:00"],5:["09:00","16:00"],6:["09:00","16:00"]}; // 0 = domingo (cerrado)
 
 const T = {
-es:{nav_fav:"Favoritos",nav_menu:"La carta",nav_story:"Nuestra historia",nav_visit:"Visítanos",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Tu momento",hero_lede:"Smoothies, bowls, zumos naturales y tostadas, preparados al momento con ingredientes frescos.",cta_menu:"Ver la carta",cta_glovo:"Pide a domicilio",tag_reviews:"104 reseñas en Google",neon_alt:"Letrero de neón de Luma Brunch sobre papel pintado de hojas de plátano",
+es:{club_eyebrow:"Club Luma",club_stamp:"Club Luma",club_h2:"¿Te apetece un <em>descuento?</em>",club_lede:"Déjanos tu email y entra en el Club Luma. Sin spam, solo cosas ricas.",club_p1:"Cupones de descuento solo para el club",club_p2:"Los platos nuevos, antes que nadie",club_p3:"Lo que pasa en Luma: eventos y sorpresas",club_ph:"tu@email.com",club_btn:"¡Me apunto!",club_consent:"Quiero recibir emails de Luma Brunch con descuentos y novedades. Puedo darme de baja cuando quiera con un clic. Usamos tu email solo para esto.",club_no:"No, gracias",club_close:"Cerrar",club_err_mail:"Escribe un email válido.",club_err_ok:"Marca la casilla para poder enviarte emails.",club_err_net:"Algo ha fallado. Inténtalo de nuevo en un momento.",club_ty_h:"¡Bienvenido al club!",club_ty_p:"Revisa tu bandeja de entrada y confirma tu email. Así te llega tu primer cupón.",club_ty_btn:"Seguir mirando",nav_fav:"Favoritos",nav_menu:"La carta",nav_story:"Nuestra historia",nav_visit:"Visítanos",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Tu momento",hero_lede:"Smoothies, bowls, zumos naturales y tostadas, preparados al momento con ingredientes frescos.",cta_menu:"Ver la carta",cta_glovo:"Pide a domicilio",tag_reviews:"104 reseñas en Google",neon_alt:"Letrero de neón de Luma Brunch sobre papel pintado de hojas de plátano",
 fav_eyebrow:"Los favoritos de la casa",fav_h2:"Lo que más se pide en Luma",fav_p:"Seis platos para empezar. Todo se prepara al momento, así que lo bueno a veces tarda un poquito.",
 menu_eyebrow:"Fresh & homemade",menu_h2:"La carta",lg_v:"Vegano",lg_vg:"Vegetariano",lg_p:"Rico en proteína",f_p:"Proteína",lg_allerg:"¿Alergias? Pregunta a nuestro equipo.",search_ph:"Busca: aguacate, matcha, açaí…",empty:"Nada coincide con tu búsqueda.",
 story_eyebrow:"Nuestra filosofía",story_h2:"Lo bueno <em>necesita tiempo.</em>",story_p1:"En Luma, la frescura es nuestro ingrediente secreto. Creemos que la buena comida empieza con ingredientes frescos y un poquito más de cariño.",story_p2:"Por eso preparamos tus smoothies, zumos naturales y bowls desde cero en el momento en que los pides. Y lo mismo con nuestros platos. Si tu pedido tarda un poco más, es porque lo hacemos especialmente para ti.",story_p3:"Siéntate, respira y disfruta de la pausa. Hay sitio para un café rápido o para un brunch largo con amigos.",
@@ -565,7 +646,7 @@ open_now:"Abierto ahora · hasta las {c}",opens_today:"Cerrado · abrimos hoy a 
 days:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],tomorrow:"mañana",
 ticker:["Smoothies","Açaí bowls","Zumos naturales","Specialty coffee","Tostadas","Vegan friendly","Hecho al momento","Brunch"],
 wa_msg:"¡Hola Luma! Tengo una pregunta:"},
-en:{nav_fav:"Favourites",nav_menu:"Menu",nav_story:"Our story",nav_visit:"Visit us",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Your moment at",hero_lede:"Smoothies, bowls, fresh juices and toast, made to order with fresh ingredients.",cta_menu:"See the menu",cta_glovo:"Order delivery",tag_reviews:"104 Google reviews",neon_alt:"Luma Brunch neon sign on banana-leaf wallpaper",
+en:{club_eyebrow:"Club Luma",club_stamp:"Club Luma",club_h2:"Fancy a <em>discount?</em>",club_lede:"Leave your email and join Club Luma. No spam, just good stuff.",club_p1:"Discount coupons for club members only",club_p2:"New dishes, before anyone else",club_p3:"What’s happening at Luma: events and surprises",club_ph:"you@email.com",club_btn:"Count me in!",club_consent:"I’d like to receive emails from Luma Brunch with discounts and news. I can unsubscribe anytime with one click. We only use your email for this.",club_no:"No, thanks",club_close:"Close",club_err_mail:"Please enter a valid email.",club_err_ok:"Tick the box so we can email you.",club_err_net:"Something went wrong. Please try again in a moment.",club_ty_h:"Welcome to the club!",club_ty_p:"Check your inbox and confirm your email. That’s how your first coupon reaches you.",club_ty_btn:"Keep browsing",nav_fav:"Favourites",nav_menu:"Menu",nav_story:"Our story",nav_visit:"Visit us",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Your moment at",hero_lede:"Smoothies, bowls, fresh juices and toast, made to order with fresh ingredients.",cta_menu:"See the menu",cta_glovo:"Order delivery",tag_reviews:"104 Google reviews",neon_alt:"Luma Brunch neon sign on banana-leaf wallpaper",
 fav_eyebrow:"House favourites",fav_h2:"What everyone orders at Luma",fav_p:"Six dishes to start with. Everything is made to order, so good things can take a little time.",
 menu_eyebrow:"Fresh & homemade",menu_h2:"The menu",lg_v:"Vegan",lg_vg:"Vegetarian",lg_p:"High protein",f_p:"Protein",lg_allerg:"Allergies? Just ask our team.",search_ph:"Search: avocado, matcha, açaí…",empty:"Nothing matches your search.",
 story_eyebrow:"Our philosophy",story_h2:"Good things <em>take time.</em>",story_p1:"At Luma, freshness is our secret ingredient. We believe good food starts with fresh ingredients and a little extra love.",story_p2:"That is why your smoothies, fresh juices and bowls are made from scratch the moment you order. The same goes for our food. If your order takes a little longer, it is because we make it just for you.",story_p3:"Sit down, breathe and enjoy the pause. There is room for a quick coffee or a long brunch with friends.",
@@ -575,7 +656,7 @@ open_now:"Open now · until {c}",opens_today:"Closed · opens today at {o}",open
 days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],tomorrow:"tomorrow",
 ticker:["Smoothies","Açaí bowls","Fresh juices","Specialty coffee","Toast","Vegan friendly","Made to order","Brunch"],
 wa_msg:"Hi Luma! I have a question:"},
-nl:{nav_fav:"Favorieten",nav_menu:"De kaart",nav_story:"Ons verhaal",nav_visit:"Bezoek ons",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Jouw moment bij",hero_lede:"Smoothies, bowls, verse sappen en toasts, vers voor je bereid met verse ingrediënten.",cta_menu:"Bekijk de kaart",cta_glovo:"Laat bezorgen",tag_reviews:"104 Google-reviews",neon_alt:"Neonbord van Luma Brunch op behang met bananenbladeren",
+nl:{club_eyebrow:"Club Luma",club_stamp:"Club Luma",club_h2:"Zin in <em>korting?</em>",club_lede:"Laat je e-mailadres achter en word lid van Club Luma. Geen spam, alleen lekkere dingen.",club_p1:"Kortingsbonnen, alleen voor clubleden",club_p2:"Nieuwe gerechten, als eerste",club_p3:"Wat er gebeurt bij Luma: events en verrassingen",club_ph:"jij@email.com",club_btn:"Ik doe mee!",club_consent:"Ik wil e-mails van Luma Brunch ontvangen met kortingen en nieuws. Ik kan me altijd met één klik afmelden. We gebruiken je e-mailadres alleen hiervoor.",club_no:"Nee, bedankt",club_close:"Sluiten",club_err_mail:"Vul een geldig e-mailadres in.",club_err_ok:"Vink het vakje aan, dan mogen we je mailen.",club_err_net:"Er ging iets mis. Probeer het zo nog eens.",club_ty_h:"Welkom bij de club!",club_ty_p:"Kijk in je inbox en bevestig je e-mailadres. Zo krijg je je eerste kortingsbon.",club_ty_btn:"Verder kijken",nav_fav:"Favorieten",nav_menu:"De kaart",nav_story:"Ons verhaal",nav_visit:"Bezoek ons",hero_eyebrow:"Benijófar · Brunch & Coffee",hero_h1a:"Jouw moment bij",hero_lede:"Smoothies, bowls, verse sappen en toasts, vers voor je bereid met verse ingrediënten.",cta_menu:"Bekijk de kaart",cta_glovo:"Laat bezorgen",tag_reviews:"104 Google-reviews",neon_alt:"Neonbord van Luma Brunch op behang met bananenbladeren",
 fav_eyebrow:"Favorieten van het huis",fav_h2:"Wat iedereen bestelt bij Luma",fav_p:"Zes gerechten om mee te beginnen. Alles wordt vers bereid, dus goede dingen kosten soms even tijd.",
 menu_eyebrow:"Fresh & homemade",menu_h2:"De kaart",lg_v:"Vegan",lg_vg:"Vegetarisch",lg_p:"Eiwitrijk",f_p:"Eiwitrijk",lg_allerg:"Allergieën? Vraag het ons team.",search_ph:"Zoek: avocado, matcha, açaí…",empty:"Niets gevonden voor je zoekopdracht.",
 story_eyebrow:"Onze filosofie",story_h2:"Goede dingen <em>kosten tijd.</em>",story_p1:"Bij Luma is versheid ons geheime ingrediënt. Wij geloven dat lekker eten begint met verse ingrediënten en een beetje extra liefde.",story_p2:"Daarom maken we je smoothies, verse sappen en bowls helemaal vers zodra je bestelt. Hetzelfde geldt voor onze gerechten. Duurt het iets langer? Dan maken we het speciaal voor jou.",story_p3:"Ga zitten, adem uit en geniet van de pauze. Er is plek voor een snelle koffie of een lange brunch met vrienden.",
@@ -615,6 +696,7 @@ function applyText(){
   document.querySelectorAll("[data-i-html]").forEach(el=>{const v=t[el.dataset.iHtml];if(v!=null)el.innerHTML=v});
   document.querySelectorAll("[data-i-ph]").forEach(el=>el.placeholder=t[el.dataset.iPh]);
   document.querySelectorAll("[data-i-alt]").forEach(el=>el.alt=t[el.dataset.iAlt]);
+  document.querySelectorAll("[data-i-aria]").forEach(el=>el.setAttribute("aria-label",t[el.dataset.iAria]));
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
   const tk=document.getElementById("ticker");tk.innerHTML="";[...t.ticker,...t.ticker].forEach(w=>{const s=document.createElement("span");s.textContent=w;tk.appendChild(s)});
   if(WHATSAPP){const u="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(t.wa_msg);["waBtn","waFloat"].forEach(id=>{const a=document.getElementById(id);a.href=u;a.hidden=false})}
@@ -695,6 +777,49 @@ window.addEventListener("load",()=>{
   L.marker(pos,{icon,title:"Luma Brunch",alt:"Luma Brunch"}).addTo(map)
    .bindPopup('<strong>Luma Brunch</strong><br>C. Aneto, Local 13<br>03178 Benijófar');
 });
+</script>
+<script>
+/* ===== Club Luma pop-up =====
+   FORM_ENDPOINT = waar de aanmeldingen naartoe gaan (nog open, Rick kiest later een e-mailadres/formulierdienst).
+   Het formulier stuurt een POST met de velden EMAIL, OPT_IN en locale (es/en/nl).
+   Zolang FORM_ENDPOINT leeg is, verschijnt de pop-up niet voor bezoekers. Voorbeeld bekijken kan altijd met ?popup=1 achter de URL. */
+const FORM_ENDPOINT = "";
+(()=>{
+  const box=document.getElementById("club");if(!box)return;
+  const KEY="luma-club",preview=new URLSearchParams(location.search).get("popup")==="1";
+  const get=()=>{try{return localStorage.getItem(KEY)}catch(e){return null}},set=v=>{try{localStorage.setItem(KEY,v)}catch(e){}};
+  if(!preview&&(!FORM_ENDPOINT||get()))return;
+  const form=document.getElementById("clubForm"),mail=document.getElementById("clubEmail"),ok=document.getElementById("clubOk"),err=document.getElementById("clubErr"),send=document.getElementById("clubSend");
+  let lastFocus=null,shown=false;
+  function open(){if(shown)return;shown=true;set("seen");window.removeEventListener("scroll",onScroll);
+    lastFocus=document.activeElement;box.hidden=false;document.documentElement.style.overflow="hidden";
+    requestAnimationFrame(()=>requestAnimationFrame(()=>box.classList.add("show")));
+    setTimeout(()=>{(matchMedia("(max-width:700px)").matches?document.getElementById("clubX"):mail).focus({preventScroll:true})},350)}
+  function close(){box.classList.remove("show");document.documentElement.style.overflow="";setTimeout(()=>{box.hidden=true;if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})},300);document.removeEventListener("keydown",onKey)}
+  function onScroll(){const h=document.documentElement.scrollHeight-innerHeight;if(h>0&&scrollY/h>=.5)open()}
+  function onKey(e){if(e.key==="Escape")close();
+    if(e.key==="Tab"){const f=[...box.querySelectorAll("button,input:not(.hp),a[href]")].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}}
+  document.addEventListener("keydown",onKey);
+  box.addEventListener("click",e=>{if(e.target===box)close()});
+  ["clubX","clubNo","clubDone"].forEach(id=>document.getElementById(id).addEventListener("click",close));
+  function fail(k){err.textContent=T[lang][k];err.hidden=false}
+  form.addEventListener("submit",async e=>{e.preventDefault();err.hidden=true;
+    const v=mail.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){fail("club_err_mail");mail.focus();return}
+    if(!ok.checked){fail("club_err_ok");ok.focus();return}
+    if(form.email_address_check.value)return;
+    send.disabled=true;
+    try{
+      if(FORM_ENDPOINT){const fd=new FormData();fd.append("EMAIL",v);fd.append("OPT_IN","1");fd.append("locale",lang);
+        await fetch(FORM_ENDPOINT,{method:"POST",mode:"no-cors",body:fd})}
+      else console.info("[Club Luma] voorbeeld: geen FORM_ENDPOINT ingesteld, er is niets verstuurd.");
+      set("joined");
+      document.getElementById("clubStep1").hidden=true;document.getElementById("clubStep1").style.display="none";
+      document.getElementById("clubStep2").hidden=false;document.getElementById("clubDone").focus();
+    }catch(x){fail("club_err_net")}finally{send.disabled=false}});
+  if(preview)setTimeout(open,600);else{window.addEventListener("scroll",onScroll,{passive:true});onScroll()}
+})();
 </script>
 </body>
 </html>
