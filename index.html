@@ -788,13 +788,13 @@ window.addEventListener("load",()=>{
 /* ===== Club Luma pop-up =====
    FORM_ENDPOINT = waar de aanmeldingen naartoe gaan (nog open, Rick kiest later een e-mailadres/formulierdienst).
    Het formulier stuurt een POST met de velden EMAIL, OPT_IN en locale (es/en/nl).
-   Zolang FORM_ENDPOINT leeg is, verschijnt de pop-up niet voor bezoekers. Voorbeeld bekijken kan altijd met ?popup=1 achter de URL. */
+   Zolang FORM_ENDPOINT leeg is, wordt er niets verstuurd (bezoeker ziet wel het bedankscherm). ?popup=1 achter de URL toont de pop-up direct. */
 const FORM_ENDPOINT = "";
 (()=>{
   const box=document.getElementById("club");if(!box)return;
   const KEY="luma-club",preview=new URLSearchParams(location.search).get("popup")==="1";
   const get=()=>{try{return localStorage.getItem(KEY)}catch(e){return null}},set=v=>{try{localStorage.setItem(KEY,v)}catch(e){}};
-  if(!preview&&(!FORM_ENDPOINT||get()))return;
+  if(!preview&&get())return;
   const form=document.getElementById("clubForm"),mail=document.getElementById("clubEmail"),ok=document.getElementById("clubOk"),err=document.getElementById("clubErr"),send=document.getElementById("clubSend");
   let lastFocus=null,shown=false;
   function open(){if(shown)return;shown=true;set("seen");window.removeEventListener("scroll",onScroll);
