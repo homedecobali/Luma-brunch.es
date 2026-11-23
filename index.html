@@ -104,7 +104,9 @@ nav.main a:hover{color:var(--fg)}
 .btn-table{background:var(--gold);color:#0b4425;box-shadow:0 10px 22px -12px rgba(120,80,10,.8)}
 .btn-table svg{width:19px;height:19px}
 @media (max-width:860px){.top .wrap{gap:10px}.top .table-menu{margin-left:auto;padding:9px 12px 9px 10px;font-size:13.5px}}
-@media (max-width:380px){.brand .word{display:none}.top .table-menu{font-size:13px}}
+.top .brand{flex:none}.top .lang{flex:none}.top .table-menu{flex:0 1 auto;min-width:0}.top .table-menu span{overflow:hidden;text-overflow:ellipsis}
+@media (max-width:480px){.brand .word{display:none}.top .wrap{gap:8px}.top .table-menu{font-size:13px;padding:9px 11px 9px 9px}.top .lang button{padding:7px 8px}}
+@media (max-width:340px){.top .table-menu span{display:none}.top .table-menu{padding:9px}}
 @media (prefers-reduced-motion:reduce){.table-menu::after{animation:none}}
 @media (max-width:860px){nav.main{display:none}.top .wrap{justify-content:space-between}.brand .word{height:24px}}
 
@@ -392,7 +394,7 @@ main{overflow-x:clip}
       <a href="#historia" data-i="nav_story">Nuestra historia</a>
       <a href="#visitanos" data-i="nav_visit">Visítanos</a>
     </nav>
-    <a class="table-menu" href="menu/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M9.5 7.5h5M9.5 11h5M9.5 14.5h3"/></svg><span data-i="cta_table">Carta de mesa</span></a>
+    <a class="table-menu" href="menu/" aria-label="Carta de mesa" data-i-aria="cta_table"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M9.5 7.5h5M9.5 11h5M9.5 14.5h3"/></svg><span data-i="cta_table">Carta de mesa</span></a>
     <div class="lang" role="group" aria-label="Idioma / Language / Taal">
       <button type="button" data-lang="es" aria-pressed="true">ES</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
