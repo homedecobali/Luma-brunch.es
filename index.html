@@ -268,8 +268,12 @@ main{overflow-x:clip}
 .fan figure img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
 .fan figure figcaption{position:absolute;left:0;right:0;bottom:4px;text-align:center;font:600 12.5px/1 var(--f-display);color:#5c4a2a;letter-spacing:.02em}
 .fan.open figure{transform:rotate(calc(var(--k) * var(--step)))}
-.fan figure:hover{translate:0 -18px;z-index:9;transition-delay:0s}
-@media (max-width:700px){.fan{height:250px;--w:130px;--step:5deg}.fan figure{bottom:36px;padding:5px 5px 18px}.fan figure figcaption{font-size:10.5px}}
+.fan figure{cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .9s cubic-bezier(.2,.8,.2,1),translate .35s ease,scale .45s cubic-bezier(.2,.8,.2,1),transform-origin .45s ease,filter .3s;transition-delay:calc(var(--i) * 60ms),0s,0s,0s,0s}
+@media (hover:hover){.fan figure:hover{translate:0 -34px;z-index:40;transition-delay:0s}}
+.fan figure:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.fan.has-pick figure:not(.pick){filter:brightness(.8) saturate(.85)}
+.fan.open figure.pick{transform:rotate(0deg);transform-origin:50% 100%;scale:1.3;translate:0 -10px;z-index:50;transition-delay:0s;box-shadow:0 40px 70px -30px rgba(0,0,0,.6)}
+@media (max-width:700px){.fan.open figure.pick{scale:1.55;translate:0 0}.fan{height:300px;--w:130px;--step:5deg}.fan figure{bottom:36px;padding:5px 5px 18px}.fan figure figcaption{font-size:10.5px}}
 .cat-ph{float:right;width:104px;aspect-ratio:1;object-fit:cover;border-radius:16px;border:5px solid var(--surface);box-shadow:0 14px 30px -16px rgba(0,0,0,.5);rotate:5deg;margin:-4px 0 12px 16px}
 .cat:nth-child(even) .cat-ph{rotate:-5deg}
 .cat-ph:hover{animation:wiggle .6s ease}
@@ -439,6 +443,7 @@ main{overflow-x:clip}
       <div class="sec-head">
         <p class="eyebrow left" data-i="fan_eyebrow">Recién hecho en Luma</p>
         <h2 data-i="fan_h2">Un vistazo a nuestra barra</h2>
+        <p data-i="fan_hint">Toca una foto para verla en grande.</p>
       </div>
       <div class="fan" id="fan">
         <figure style="--i:0;--k:-3;--a:3"><img src="assets/img/fotos/matcha-neon-s.jpg" alt="Matcha" loading="lazy"><figcaption>Matcha</figcaption></figure>
@@ -661,7 +666,7 @@ fav_eyebrow:"Los favoritos de la casa",fav_h2:"Lo que más se pide en Luma",fav_
 menu_eyebrow:"Fresh & homemade",menu_h2:"La carta",lg_v:"Vegano",lg_vg:"Vegetariano",lg_p:"Rico en proteína",f_p:"Proteína",lg_allerg:"¿Alergias? Pregunta a nuestro equipo.",search_ph:"Busca: aguacate, matcha, açaí…",empty:"Nada coincide con tu búsqueda.",
 story_eyebrow:"Nuestra filosofía",story_h2:"Lo bueno <em>necesita tiempo.</em>",story_p1:"En Luma, la frescura es nuestro ingrediente secreto. Creemos que la buena comida empieza con ingredientes frescos y un poquito más de cariño.",story_p2:"Por eso preparamos tus smoothies, zumos naturales y bowls desde cero en el momento en que los pides. Y lo mismo con nuestros platos. Si tu pedido tarda un poco más, es porque lo hacemos especialmente para ti.",story_p3:"Siéntate, respira y disfruta de la pausa. Hay sitio para un café rápido o para un brunch largo con amigos.",
 proof_eyebrow:"Lo que dicen de Luma",proof_h2:"Un rincón que la gente recomienda",proof_google:"Valoración media en Google, con más de 100 reseñas de clientes.",proof_google_a:"Leer las reseñas →",proof_vegan:"Muy recomendable para veganos según Spinach: tostadas veganas, bebidas vegetales y la carta claramente marcada.",proof_vegan_a:"Ver opciones veganas →",proof_ig:"Platos del día, novedades y cambios de horario: todo lo compartimos primero en Instagram.",proof_ig_a:"Síguenos en Instagram →",
-visit_eyebrow:"Nos vemos en Benijófar",visit_h2:"Tu próxima pausa empieza aquí",visit_note:"Sin reservas: ven cuando quieras. Festivos y cambios de horario en nuestras historias de Instagram.",cta_route:"Cómo llegar",cta_wa:"WhatsApp",cta_dm:"Escríbenos en Instagram",map_open:"Ver mapa grande ↗",fan_eyebrow:"Recién hecho en Luma",fan_h2:"Un vistazo a nuestra barra",strip_a:"Más fotos en Instagram @lumabrunch →",qr_h:"¿Te ha gustado? Déjanos tu reseña",qr_p:"Escanea el código con tu móvil o pulsa el botón. Solo tarda un minuto y nos ayuda muchísimo.",qr_btn:"Escribir una reseña en Google",reels_eyebrow:"Luma en movimiento",reels_h2:"Así se vive una mañana en Luma",board_h:"Hoy en la pizarra",board_foot:"Todo hecho al momento ♥",foot:"Preparado al momento, con cariño · Benijófar",
+visit_eyebrow:"Nos vemos en Benijófar",visit_h2:"Tu próxima pausa empieza aquí",visit_note:"Sin reservas: ven cuando quieras. Festivos y cambios de horario en nuestras historias de Instagram.",cta_route:"Cómo llegar",cta_wa:"WhatsApp",cta_dm:"Escríbenos en Instagram",map_open:"Ver mapa grande ↗",fan_eyebrow:"Recién hecho en Luma",fan_h2:"Un vistazo a nuestra barra",fan_hint:"Toca una foto para verla en grande.",strip_a:"Más fotos en Instagram @lumabrunch →",qr_h:"¿Te ha gustado? Déjanos tu reseña",qr_p:"Escanea el código con tu móvil o pulsa el botón. Solo tarda un minuto y nos ayuda muchísimo.",qr_btn:"Escribir una reseña en Google",reels_eyebrow:"Luma en movimiento",reels_h2:"Así se vive una mañana en Luma",board_h:"Hoy en la pizarra",board_foot:"Todo hecho al momento ♥",foot:"Preparado al momento, con cariño · Benijófar",
 open_now:"Abierto ahora · hasta las {c}",opens_today:"Cerrado · abrimos hoy a las {o}",opens_next:"Cerrado · abrimos {d} a las {o}",closed:"Cerrado",
 days:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],tomorrow:"mañana",
 ticker:["Smoothies","Açaí bowls","Zumos naturales","Specialty coffee","Tostadas","Vegan friendly","Hecho al momento","Brunch"],
@@ -671,7 +676,7 @@ fav_eyebrow:"House favourites",fav_h2:"What everyone orders at Luma",fav_p:"Six 
 menu_eyebrow:"Fresh & homemade",menu_h2:"The menu",lg_v:"Vegan",lg_vg:"Vegetarian",lg_p:"High protein",f_p:"Protein",lg_allerg:"Allergies? Just ask our team.",search_ph:"Search: avocado, matcha, açaí…",empty:"Nothing matches your search.",
 story_eyebrow:"Our philosophy",story_h2:"Good things <em>take time.</em>",story_p1:"At Luma, freshness is our secret ingredient. We believe good food starts with fresh ingredients and a little extra love.",story_p2:"That is why your smoothies, fresh juices and bowls are made from scratch the moment you order. The same goes for our food. If your order takes a little longer, it is because we make it just for you.",story_p3:"Sit down, breathe and enjoy the pause. There is room for a quick coffee or a long brunch with friends.",
 proof_eyebrow:"What people say",proof_h2:"A spot people recommend",proof_google:"Average Google rating, from more than 100 customer reviews.",proof_google_a:"Read the reviews →",proof_vegan:"Very vegan-friendly according to Spinach: vegan toasts, plant milks and a clearly marked menu.",proof_vegan_a:"See vegan options →",proof_ig:"Daily specials, news and changes to our hours: we share it all on Instagram first.",proof_ig_a:"Follow us on Instagram →",
-visit_eyebrow:"See you in Benijófar",visit_h2:"Your next break starts here",visit_note:"No reservations needed, just walk in. Bank holidays and changes to our hours are in our Instagram stories.",cta_route:"Get directions",cta_wa:"WhatsApp",cta_dm:"Message us on Instagram",map_open:"View larger map ↗",fan_eyebrow:"Freshly made at Luma",fan_h2:"A peek at our counter",strip_a:"More photos on Instagram @lumabrunch →",qr_h:"Enjoyed it? Leave us a review",qr_p:"Scan the code with your phone or tap the button. It only takes a minute and helps us a lot.",qr_btn:"Write a Google review",reels_eyebrow:"Luma in motion",reels_h2:"A morning at Luma",board_h:"On the board today",board_foot:"All made to order ♥",foot:"Made to order, with love · Benijófar",
+visit_eyebrow:"See you in Benijófar",visit_h2:"Your next break starts here",visit_note:"No reservations needed, just walk in. Bank holidays and changes to our hours are in our Instagram stories.",cta_route:"Get directions",cta_wa:"WhatsApp",cta_dm:"Message us on Instagram",map_open:"View larger map ↗",fan_eyebrow:"Freshly made at Luma",fan_h2:"A peek at our counter",fan_hint:"Tap a photo to see it up close.",strip_a:"More photos on Instagram @lumabrunch →",qr_h:"Enjoyed it? Leave us a review",qr_p:"Scan the code with your phone or tap the button. It only takes a minute and helps us a lot.",qr_btn:"Write a Google review",reels_eyebrow:"Luma in motion",reels_h2:"A morning at Luma",board_h:"On the board today",board_foot:"All made to order ♥",foot:"Made to order, with love · Benijófar",
 open_now:"Open now · until {c}",opens_today:"Closed · opens today at {o}",opens_next:"Closed · opens {d} at {o}",closed:"Closed",
 days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],tomorrow:"tomorrow",
 ticker:["Smoothies","Açaí bowls","Fresh juices","Specialty coffee","Toast","Vegan friendly","Made to order","Brunch"],
@@ -681,7 +686,7 @@ fav_eyebrow:"Favorieten van het huis",fav_h2:"Wat iedereen bestelt bij Luma",fav
 menu_eyebrow:"Fresh & homemade",menu_h2:"De kaart",lg_v:"Vegan",lg_vg:"Vegetarisch",lg_p:"Eiwitrijk",f_p:"Eiwitrijk",lg_allerg:"Allergieën? Vraag het ons team.",search_ph:"Zoek: avocado, matcha, açaí…",empty:"Niets gevonden voor je zoekopdracht.",
 story_eyebrow:"Onze filosofie",story_h2:"Goede dingen <em>kosten tijd.</em>",story_p1:"Bij Luma is versheid ons geheime ingrediënt. Wij geloven dat lekker eten begint met verse ingrediënten en een beetje extra liefde.",story_p2:"Daarom maken we je smoothies, verse sappen en bowls helemaal vers zodra je bestelt. Hetzelfde geldt voor onze gerechten. Duurt het iets langer? Dan maken we het speciaal voor jou.",story_p3:"Ga zitten, adem uit en geniet van de pauze. Er is plek voor een snelle koffie of een lange brunch met vrienden.",
 proof_eyebrow:"Wat gasten zeggen",proof_h2:"Een plek die mensen aanraden",proof_google:"Gemiddelde Google-score, uit meer dan 100 reviews van gasten.",proof_google_a:"Lees de reviews →",proof_vegan:"Zeer vegan-vriendelijk volgens Spinach: vegan toasts, plantaardige melk en een duidelijk gemarkeerde kaart.",proof_vegan_a:"Bekijk vegan opties →",proof_ig:"Dagspecials, nieuws en gewijzigde openingstijden: we delen alles eerst op Instagram.",proof_ig_a:"Volg ons op Instagram →",
-visit_eyebrow:"Tot ziens in Benijófar",visit_h2:"Je volgende pauze begint hier",visit_note:"Reserveren is niet nodig, loop gewoon binnen. Feestdagen en gewijzigde tijden staan in onze Instagram-stories.",cta_route:"Route plannen",cta_wa:"WhatsApp",cta_dm:"Stuur ons een bericht op Instagram",map_open:"Grotere kaart ↗",fan_eyebrow:"Vers gemaakt bij Luma",fan_h2:"Een kijkje aan onze bar",strip_a:"Meer foto’s op Instagram @lumabrunch →",qr_h:"Lekker gegeten? Laat een review achter",qr_p:"Scan de code met je telefoon of tik op de knop. Het kost maar een minuutje en helpt ons enorm.",qr_btn:"Schrijf een Google-review",reels_eyebrow:"Luma in beweging",reels_h2:"Zo voelt een ochtend bij Luma",board_h:"Vandaag op het bord",board_foot:"Alles vers voor je gemaakt ♥",foot:"Vers bereid, met liefde · Benijófar",
+visit_eyebrow:"Tot ziens in Benijófar",visit_h2:"Je volgende pauze begint hier",visit_note:"Reserveren is niet nodig, loop gewoon binnen. Feestdagen en gewijzigde tijden staan in onze Instagram-stories.",cta_route:"Route plannen",cta_wa:"WhatsApp",cta_dm:"Stuur ons een bericht op Instagram",map_open:"Grotere kaart ↗",fan_eyebrow:"Vers gemaakt bij Luma",fan_h2:"Een kijkje aan onze bar",fan_hint:"Tik op een foto om hem groot te zien.",strip_a:"Meer foto’s op Instagram @lumabrunch →",qr_h:"Lekker gegeten? Laat een review achter",qr_p:"Scan de code met je telefoon of tik op de knop. Het kost maar een minuutje en helpt ons enorm.",qr_btn:"Schrijf een Google-review",reels_eyebrow:"Luma in beweging",reels_h2:"Zo voelt een ochtend bij Luma",board_h:"Vandaag op het bord",board_foot:"Alles vers voor je gemaakt ♥",foot:"Vers bereid, met liefde · Benijófar",
 open_now:"Nu open · tot {c}",opens_today:"Gesloten · vandaag open om {o}",opens_next:"Gesloten · open {d} om {o}",closed:"Gesloten",
 days:["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"],tomorrow:"morgen",
 ticker:["Smoothies","Açaí bowls","Verse sappen","Specialty coffee","Toasts","Vegan friendly","Vers bereid","Brunch"],
@@ -783,6 +788,24 @@ applyText();setInterval(renderStatus,60000);
   if(RM||!("IntersectionObserver" in window))return;
   const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){const p=v.play();if(p)p.catch(()=>{})}else v.pause()}),{threshold:.35});
   vs.forEach(v=>io.observe(v))})();
+(()=>{const f=document.getElementById("fan"),figs=[...f.querySelectorAll("figure")];
+  const pick=el=>{const on=el&&!el.classList.contains("pick");figs.forEach(x=>x.classList.remove("pick"));if(on)el.classList.add("pick");f.classList.toggle("has-pick",!!on)};
+  let lastPt=null;f.addEventListener("pointerdown",e=>{lastPt=[e.clientX,e.clientY]},true);
+  figs.forEach(el=>{el.tabIndex=0;el.setAttribute("role","button");
+    el.addEventListener("click",e=>{e.stopPropagation();
+      if(matchMedia("(hover:none)").matches){/* touch: kies de kaart op basis van waar de vinger echt tikte (zonder Chrome's tik-correctie) */
+        const X=lastPt?lastPt[0]:e.clientX,Y=lastPt?lastPt[1]:e.clientY,cur=f.querySelector(".pick");
+        if(cur){const r=cur.getBoundingClientRect();if(X>=r.left&&X<=r.right&&Y>=r.top&&Y<=r.bottom){pick(cur);return}}
+        /* echte (gedraaide) linker- en rechterrand van elke kaart op de hoogte van de tik */
+        const E=figs.map(x=>{const r=x.getBoundingClientRect(),m=new DOMMatrix(getComputedStyle(x).transform),a=Math.atan2(m.b,m.a),w=x.offsetWidth*(parseFloat(getComputedStyle(x).scale)||1)/2/Math.cos(a),cx=r.left+r.width/2,dy=Y-(r.top+r.height/2),sh=-dy*Math.tan(a);return[cx-w+sh,cx+w+sh]});
+        const c=3;let k=c;
+        if(X<E[c][0]){k=0;for(let j=0;j<c;j++)if(E[j][0]<=X)k=j}
+        else if(X>E[c][1]){k=figs.length-1;for(let j=figs.length-1;j>c;j--)if(E[j][1]>=X)k=j}
+        pick(figs[k]===cur?null:figs[k]);return}
+      pick(el)});
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(el)}})});
+  document.addEventListener("click",()=>pick(null));document.addEventListener("keydown",e=>{if(e.key==="Escape")pick(null)});
+})();
 (()=>{const f=document.getElementById("fan");if(!("IntersectionObserver" in window)){f.classList.add("open");return}
   new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){f.classList.add("open");o.disconnect()}}),{threshold:.2}).observe(f)})();
 </script>
