@@ -22,3 +22,12 @@ Geen build-stap en geen framework: elke statische host werkt (GitHub Pages, Netl
 | Teksten per taal | `index.html`, object `T` (es / en / nl) |
 
 Kaartgegevens overgenomen van de huidige luma-brunch.es (november 2026).
+
+## Kassa (testfase)
+
+`kassa/` – kassa-webapp voor de tablet (landschap, touch): inloggen per medewerker met pincode, tafelplattegrond, bestellen per tafel met foto's uit de kaart, afrekenen met PIN of contant, bon op scherm (factura simplificada met Verifactu-huella en QR), dag- en weekstaten, kassa opmaken (Z). Werkt offline (IndexedDB + service worker).
+
+- Nu alleen voorkant met **voorbeelddata**, geen server, er gaat niets naar de AEAT.
+- Menukaart en foto's komen uit `assets/` (zelfde bron als de website).
+- Instellingen, medewerkers en tafels: `kassa/js/config.js`.
+- **Vóór echt gebruik:** zie [`kassa/LIVEGANG.md`](kassa/LIVEGANG.md).

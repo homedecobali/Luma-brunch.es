@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>LUMA Kassa</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b4425">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<!-- TESTFASE: zie LIVEGANG.md voor wat er vóór echt gebruik moet veranderen. -->
+<div id="login" class="login" hidden></div>
+<div id="app" hidden>
+  <header id="top" class="topbar"></header>
+  <div id="demo" class="demo-strip"></div>
+  <main id="main"></main>
+</div>
+<script>window.LK_ASSETS = "../assets/";</script>
+<script src="../assets/menu.js"></script>
+<script src="vendor/qrcode-generator.js"></script>
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/store.js"></script>
+<script src="js/fiscal.js"></script>
+<script src="js/app.js"></script>
+<script src="js/seed.js"></script>
+<script>
+  LK.start();
+  /* Offline: service worker bewaart de app en de kaart op de tablet. */
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    try { navigator.serviceWorker.register("sw.js").catch(function () {}); } catch (e) {}
+  }
+</script>
+</body>
+</html>

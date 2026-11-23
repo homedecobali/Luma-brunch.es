@@ -1,0 +1,11 @@
+{
+  "name": "LUMA Kassa",
+  "short_name": "LUMA Kassa",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#0b4425",
+  "theme_color": "#0b4425",
+  "icons": [{ "src": "../assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }]
+}
